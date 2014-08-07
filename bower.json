@@ -1,0 +1,8 @@
+{
+  "name": "angularjs-webapp",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.0"
+  },
+  "devDependencies": {}
+}

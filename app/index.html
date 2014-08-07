@@ -1,0 +1,43 @@
+<!-- Swami Shreeji
+ANGULAR JS APPLICATION (ROUTING) -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Athletic Training Software</title>
+        <meta name="description" content="Angular App">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../bower_components/foundation/css/foundation.css">
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+
+    <div class="row" ng-app="myApp">
+        <div class="small-11 small-centered columns">
+            <!-- HEADER TEMPLATE -->
+            <header ng-include=" 'templates/nav.html' "></header><hr/>
+
+            <!-- MAIN AREA FOR CONTENT -->
+            <div ui-view></div>
+            
+            <!-- FOOTER TEMPLATE -->
+            <footer ng-include=" 'templates/footer.html' "></footer>
+
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script src="scripts/controllers/homeCtrl.js"></script>
+    <script src="scripts/controllers/athletesCtrl.js"></script>
+    <script src="scripts/controllers/injuryCtrl.js"></script>
+    <script src="scripts/controllers/to-doCtrl.js"></script>
+    <script src="scripts/controllers/aboutCtrl.js"></script>
+    </body>
+</html>

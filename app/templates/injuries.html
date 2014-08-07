@@ -1,0 +1,26 @@
+<!-- Swami Shreeji
+injuries.html -->
+
+<h1>{{title}}</h1>
+
+<h3>Search: {{search.$}}</h3>
+<input type="text" ng-model="search.$" class="search">
+
+<table class="table">
+	<thead>
+		<td><h4>Athlete</h4></td>
+		<td><h4>Injury</h4></td>
+		<td><h4>Description</h4></td>
+		<td><h4>Date</h4></td>
+		<td><h4>Action</h4></td>
+	</thead>
+	<tbody class="injuryTable">
+		<tr ng-repeat="player in injuries.athletes | filter:search">
+			<td>{{player.name}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
+			<td>{{player.injury}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
+			<td>{{player.description}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
+			<td>{{player.date}}</td>
+			<td><button class="btn btn-primary">Edit <span class="glyphicon glyphicon-edit"></span></button></td>
+		</tr>
+	</tbody>
+</table>
