@@ -29,8 +29,15 @@ small {
 }
 
 .injuryTable tr:hover td {
-	background-color: #008CBA;
-	color: #fff;
+	/*background-color: #008CBA;
+            color: #fff;*/
+            background-color: #F0F0F0;
+            font-weight: 800;
+}
+
+.athleteTable tr:hover td {
+            background-color: #F0F0F0;
+            font-weight: 800;
 }
 
 .search {
@@ -49,3 +56,17 @@ small {
 	width: 35%;
 
 }
+
+
+/*Injury Page*/
+
+.modal_Input {
+    width: 20%;
+}
+
+
+
+
+
+
+
