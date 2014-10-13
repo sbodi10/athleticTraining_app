@@ -1,10 +1,9 @@
 //Swami Shreeji
-var myApp = angular.module('myApp', ['ui.router']);
+var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap']);
 
 myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
 	
-
 	$stateProvider.state('home', {
 		url: '/',
 		templateUrl: 'templates/home.html',
