@@ -67,6 +67,14 @@ small {
 }
 
 
+/*To-Do List*/
+
+#tableList li {
+    margin-top: -20px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    border-radius: 2px;
+}
 
 
 

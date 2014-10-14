@@ -1,3 +1,27 @@
 <!-- Swami Shreeji
 to-do.html -->
 <h1>{{title}}</h1>
+
+<!-- Input Task -->
+<div class="col-xs-6">
+	<form name="listForm" id="listForm" novalidate>
+		<p>{{formQuestion}} | {{formAnswer}}</p>
+		<input class="form-control" id="resource" placeholder="Resource" type="text" required ng-model="formQuestion">
+		<input class="form-control" id="task" placeholder="Task" type="text" required ng-model="formAnswer">
+	</form>
+	<button class="btn btn-primary" id="addTask" ng-click="addItem(formQuestion, formAnswer)">Add Task</button>
+	<button class="btn btn-danger" ng-click="removeLast()">Delete Task</button>
+	<button class="btn btn-warning" ng-click="clearList()">Clear List</button>
+</div>
+
+<!-- List of Tasks -->
+<div class="col-xs-6" id="tableList">
+	<p>Task List: {{ getTotal() }}</p>
+		<table class="table">
+			<div class="panel-body">
+				<ul>
+					<li ng-repeat="q in quizzes" class="bg-primary">{{q.q}} | {{q.a}}</li>
+				</ul>
+			</div>
+		</table>	
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

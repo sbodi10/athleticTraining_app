@@ -151,8 +151,16 @@ myApp.factory('Athletes', function() {
 })
 
 
+myApp.factory('Quiz', function() {
+	var data = [ {q: 'Sapan Bodiwala', a: 'Dashboard'},
+		{q: 'Arun', a: 'Checklist'} ];
 
-
+	return {
+		getData: function() {
+			return data;
+		}
+	}
+});
 
 
 
