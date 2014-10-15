@@ -66,6 +66,11 @@ small {
     width: 20%;
 }
 
+#addAthlete {
+    float: right;
+    margin-top: 5px;
+}
+
 
 /*To-Do List*/
 
@@ -74,8 +79,14 @@ small {
     margin-bottom: 30px;
     padding-left: 10px;
     border-radius: 2px;
+    list-style: none;
 }
 
+input.ng-invalid.ng-dirty {
+    box-shadow: 0 0 2px 2px #ed1c24;
+    -moz-box-shadow: 0 0 2px 2px #ed1c24;
+    -webkit-box-shadow: 0 0 2px 2px #ed1c24;
+}
 
 
 

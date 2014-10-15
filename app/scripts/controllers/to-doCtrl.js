@@ -36,23 +36,43 @@ angular.module('myApp')
 
 		$(function() {
 			
+			var bar = $("#bar");
+			var progress = $(".progress");
+			$(window).load(function() {
+				progress.fadeIn(1000);
+				bar.css("width", "0%");
+				bar.css("width", "100%");
+				bar.fadeOut(1000);
+				progress.fadeOut(1000);
+			});
 
-			/*
-			if("#resource").blur(function() {
-				var a = $("#resource").val();
-			})
+			var resource = $("#resource");
+			var task = $("#task");
+			var formQuestion = $("#formQuestion");
+			var formAnswer = $("#formAnswer");
+			var addTask = $("#addTask");
 
-			if("#task").blur(function() {
-				var b = $("#task").val();
-			}
+			addTask.attr("disabled", true);
 
-
-			/*$("#addTask").on("click", function() {
-				if (a + b != '') {
-					$("#addTask").attr("disabled", false);
+			resource.keyup(function() {
+				if(resource.val().length >= 3 && task.val().length >= 3) {
+					addTask.attr("disabled", false);
 				}
-			});*/
-				
+				else {
+					addTask.attr("disabled", true);
+				}
+			});
+
+			task.keyup(function() {
+				if(resource.val().length >= 3 && task.val().length >= 3) {
+					addTask.attr("disabled", false);
+				}
+				else {
+					addTask.attr("disabled", true);
+				}
+			});
+			
+
 		});
 
 }]);

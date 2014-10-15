@@ -24,6 +24,11 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
 		controller: 'athletesCtrl'
 	})
 
+	$stateProvider.state('addAthlete', {
+		url:'/addAthlete',
+		templateUrl: 'templates/addAthlete.html',
+		controller: 'addAthleteCtrl'
+	})
 
 	$stateProvider.state('injury', {
 		url: '/injuries',
@@ -156,11 +161,28 @@ myApp.factory('Quiz', function() {
 		{q: 'Arun', a: 'Checklist'} ];
 
 	return {
-		getData: function() {
+		getData : function() {
 			return data;
 		}
 	}
 });
+
+myApp.factory('Questions', function() {
+	var data = [ { q: 'Athlete\'s Name? ', a:'Sapan'},
+		{ q: 'Grade?'},
+		{ q: 'Doctor\'s Name?'},
+		{ q: 'Phone Number?'},
+		{ q: 'Visited Doctor?'},
+		{ q: 'Referred for Therapy?'},
+		{ q: 'School insurance Form Issued?'},
+		{ q: 'Accident Report Filed?'} ];
+
+	return {
+		getData : function() {
+			return data;
+		}
+	}
+})
 
 
 
