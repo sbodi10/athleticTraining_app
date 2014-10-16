@@ -34,45 +34,45 @@ angular.module('myApp')
 		2. Onblur function, highlight input box
 		*/
 
-		$(function() {
-			
-			var bar = $("#bar");
-			var progress = $(".progress");
-			$(window).load(function() {
-				progress.fadeIn(1000);
-				bar.css("width", "0%");
-				bar.css("width", "100%");
-				bar.fadeOut(1000);
-				progress.fadeOut(1000);
-			});
+		var resource = $("#resource");
+		var task = $("#task");
+		var formQuestion = $("#formQuestion");
+		var formAnswer = $("#formAnswer");
+		var addTask = $("#addTask");
 
-			var resource = $("#resource");
-			var task = $("#task");
-			var formQuestion = $("#formQuestion");
-			var formAnswer = $("#formAnswer");
-			var addTask = $("#addTask");
+		addTask.attr("disabled", true);
 
-			addTask.attr("disabled", true);
-
-			resource.keyup(function() {
-				if(resource.val().length >= 3 && task.val().length >= 3) {
-					addTask.attr("disabled", false);
-				}
-				else {
-					addTask.attr("disabled", true);
-				}
-			});
-
-			task.keyup(function() {
-				if(resource.val().length >= 3 && task.val().length >= 3) {
-					addTask.attr("disabled", false);
-				}
-				else {
-					addTask.attr("disabled", true);
-				}
-			});
-			
-
+		resource.keyup(function() {
+			if(resource.val().length >= 3 && task.val().length >= 3) {
+				addTask.attr("disabled", false);
+			}
+			else {
+				addTask.attr("disabled", true);
+			}
 		});
+
+		task.keyup(function() {
+			if(resource.val().length >= 3 && task.val().length >= 3) {
+				addTask.attr("disabled", false);
+			}
+			else {
+				addTask.attr("disabled", true);
+			}
+		});
+			
+                	$scope.onViewLoad = function() { 
+                		var bar = $("#bar");
+                		var progress = $(".progress");                      
+			progress.fadeIn(50);
+			bar.fadeIn(100);
+			bar.css("width", "0%");
+			bar.css("width", "25%");
+			bar.css("width", "50%");
+			bar.css("width", "75%");
+			bar.css("width", "100%");
+			bar.fadeOut(2000);
+			progress.fadeOut(2000);
+	            }
+
 
 }]);

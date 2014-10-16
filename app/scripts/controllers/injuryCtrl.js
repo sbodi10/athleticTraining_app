@@ -40,5 +40,19 @@ angular.module('myApp')
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = $scope.formats[0];
 
+		$scope.onViewLoad = function() { 
+                		var bar = $("#bar");
+                		var progress = $(".progress");                      
+			progress.fadeIn(50);
+			bar.fadeIn(100);
+			bar.css("width", "0%");
+			bar.css("width", "25%");
+			bar.css("width", "50%");
+			bar.css("width", "75%");
+			bar.css("width", "100%");
+			bar.fadeOut(2000);
+			progress.fadeOut(2000);
+	            }
+
 	
 }])

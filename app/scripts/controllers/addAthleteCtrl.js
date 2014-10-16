@@ -3,7 +3,7 @@
 
 angular.module('myApp')
 
-	.controller('addAthleteCtrl', ['Questions', '$scope', function(Questions, $scope) {
+	.controller('addAthleteCtrl', ['Questions', '$timeout', '$scope', function(Questions, $timeout, $scope) {
 
 		$scope.title = "Add Athlete";
 		$scope.counter = $scope.counter || 0;
@@ -21,7 +21,9 @@ angular.module('myApp')
 			else {
 				$scope.counter += 1;
 			}
-		};
+
+			$scope.myClass = 'flip-add';
+		}
 
 		$scope.decrementCounter = function() {
 			if($scope.counter === 0) {
@@ -30,6 +32,8 @@ angular.module('myApp')
 			else {
 				$scope.counter -= 1;
 			}
+
+			$scope.myClass = 'flip-add';
 		}
 
 		$scope.clearAnswer = function() {
@@ -38,20 +42,32 @@ angular.module('myApp')
 
 		$scope.nextQuestion = function() {
 			$scope.incrementCounter();
+			$setTimeout(function() {
+				$scope.myClass = '';
+			}, 2500);
 			$scope.clearAnswer();
 		}
 
-		$scope.isCorrect = function(value) {
-			return value === this.questions(this.counter).a ? true : false;
+		$scope.prevQuestion = function() {
+			$scope.decrementCounter();
+			$setTimeout(function() {
+				$scope.myClass = '';
+			}, 2500);
+			$scope.clearAnswer();
 		}
 
-		$scope.$watch("userAnswer", function(newValue) {
-			if($scope.isCorrect( newValue) ) {
-				$scope.nextQuestion();	
-			}
-		});
-
-
-
+                	$scope.onViewLoad = function() { 
+                		var bar = $("#bar");
+                		var progress = $(".progress");                      
+			progress.fadeIn(50);
+			bar.fadeIn(100);
+			bar.css("width", "0%");
+			bar.css("width", "25%");
+			bar.css("width", "50%");
+			bar.css("width", "75%");
+			bar.css("width", "100%");
+			bar.fadeOut(2000);
+			progress.fadeOut(2000);
+	            }
 
 }]);

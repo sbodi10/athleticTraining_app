@@ -8,10 +8,10 @@ to-do.html -->
 		<p>{{formQuestion}} | {{formAnswer}}</p>
 		<input class="form-control" id="resource" placeholder="Resource" type="text" required ng-minlength=3 ng-model="formQuestion">
 		<input class="form-control" id="task" placeholder="Task" type="text" required ng-minlength=3 ng-model="formAnswer">
-	</form>
 	<button class="btn btn-primary" id="addTask" ng-click="addItem(formQuestion, formAnswer)">Add Task</button>
 	<button class="btn btn-danger" ng-click="removeLast()">Delete Task</button>
 	<button class="btn btn-warning" ng-click="clearList()">Clear List</button>
+	</form>
 </div>
 
 <!-- List of Tasks -->

@@ -2,25 +2,17 @@
 home.html -->
 <h1>{{title}}</h1>
 
-<div id="notes">
+<div id="notes" class="col-md-7">
 	<h3>Notes Area</h3>
-	<textarea cols="30" rows="10" style="width: 50%;"></textarea>
+	<textarea rows="6" style="width: 80%;"></textarea>
+	<button class="btn btn-primary btn-lg" style="margin: 0px 10px 0px 10px;">Save</button>
 </div>
 
-<div id="reminders">
-	<h3>Reminders</h3>
+<form id="reminders" class="col-md-5">
+	<h3>Reminders: ({{counter + 1}})</h3>
+	<input type="text" required ng-minlength=3 ng-model="userReminder">
+	<button class="btn btn-success btn-lg" ng-click="addReminder(userReminder)">Add Reminder</button><br><br>
 	<table>
-		<tr>
-			<td>Something</td>
-		</tr>
-		<tr>
-			<td>Somthing2</td>
-		</tr>
-		<tr>
-			<td><input type="text"></td>
-		</tr>
-		<tr>
-			<td><button class="btn btn-success">Add Reminder</button></td>
-		</tr>
+		<li class="alert alert-warning" ng-repeat="r in reminder">{{ r.r }}</li>
 	</table>
-</div>
+</form>

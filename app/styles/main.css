@@ -48,15 +48,9 @@ small {
 }
 
 /*Home Page*/
-#notes {
 
-}
-
-#reminders {
-	float: right;
-	margin-top: -43%;
-	width: 35%;
-
+#reminders li {
+    list-style: square;
 }
 
 
@@ -87,6 +81,42 @@ input.ng-invalid.ng-dirty {
     -moz-box-shadow: 0 0 2px 2px #ed1c24;
     -webkit-box-shadow: 0 0 2px 2px #ed1c24;
 }
+
+input.ng-dirty.ng-valid.ng-valid-required.ng-valid-minlength {
+    box-shadow: 0 0 2px 2px green;
+    -moz-box-shadow: 0 0 2px 2px green;
+    -webkit-box-shadow: 0 0 2px 2px green;
+}
+
+
+/*AngularJS ngAnimate */
+.ng-enter, .ng-leave.ng-leave-active {
+    opacity: 0;
+}
+.ng-leave, .ng-enter.ng-enter-active {
+    opacity: 1;
+}
+.ng-enter {
+    -webkit-transition: 2s all;
+    transition: 2s all;
+}
+.ng-leave {
+    -webkit-transition: 0.1s all;
+    transition: 0.1s all;
+}
+
+.flip {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    margin-left: 0;
+}
+
+.flip-add {
+    margin-left: -150%;
+}
+
+
+
 
 
 

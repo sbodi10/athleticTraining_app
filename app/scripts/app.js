@@ -1,5 +1,5 @@
 //Swami Shreeji
-var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap']);
+var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate']);
 
 myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
@@ -155,6 +155,15 @@ myApp.factory('Athletes', function() {
 	return Athletes;
 })
 
+myApp.factory('Reminders', function() {
+	var data = [ { r: 'Learn AngularJS' } ];
+	return {
+		getData : function() {
+			return data;
+		}
+	}
+});
+
 
 myApp.factory('Quiz', function() {
 	var data = [ {q: 'Sapan Bodiwala', a: 'Dashboard'},
@@ -183,10 +192,6 @@ myApp.factory('Questions', function() {
 		}
 	}
 })
-
-
-
-
 
 
 

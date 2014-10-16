@@ -22,7 +22,7 @@ ANGULAR JS APPLICATION (ROUTING) -->
             <header ng-include=" 'templates/nav.html' "></header><hr/>
 
             <!-- MAIN AREA FOR CONTENT (DYNAMIC) -->
-            <div ui-view></div>
+            <div ui-view onload="onViewLoad()"></div>
             
             <!-- FOOTER TEMPLATE (STATIC) -->
             <footer ng-include=" 'templates/footer.html' "></footer>
@@ -37,6 +37,7 @@ ANGULAR JS APPLICATION (ROUTING) -->
     <script type="text/javascript" src="../bower_components/foundation/js/foundation.min.js"></script>
     <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="../bower_components/angular/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
     <script type="text/javascript" src="../bower_components/bootstrap/dist/js/ui-bootstrap.min.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
     <script src="scripts/controllers/homeCtrl.js"></script>

@@ -2,7 +2,11 @@
   "name": "angularjs-webapp",
   "private": true,
   "dependencies": {
-    "jquery": "~1.11.0"
+    "jquery": "~1.11.0",
+    "angular-animate": "~1.2.16"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "angular": "~1.2.21"
+  }
 }

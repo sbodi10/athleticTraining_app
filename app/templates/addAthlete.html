@@ -1,22 +1,16 @@
 <h1>{{title}}</h1><br>
 
-<div class="flip">
-	
+<div class="flip" ng-class="myClass">
 	<h3>Questions {{ counter + 1 }}</h3>
 	<form name="myForm" novalidate>
 		<h2 ng-model="questions[counter]">{{ questions[counter].q }}</h2>
 
-
-		<input id="answer" name="answer" tab-index="1" type="text" ng-model="userAnswer">
-		
-	
-		<button id="prev" class="btn btn-default btn-lg" ng-click="decrementCounter()">< Prev</button>
-		<button id="next" class="btn btn-primary btn-lg" ng-click="incrementCounter()">Next ></button>
+		<input id="answer" style="width: 40%;" name="answer" tab-index="1" type="text" ng-model="userAnswer">
+			
+		<button id="prev" class="btn btn-default btn-lg" ng-click="prevQuestion()">< Prev</button>
+		<button id="next" class="btn btn-primary btn-lg" ng-click="nextQuestion()">Next ></button>
 		<button id="submit" class="btn btn-success btn-lg">Submit</button><br><br><br>
 
 		<a ui-sref="athletes"><button class="btn btn-default btn-lg"> Back to Athletes</button></a>
-
 	</form>
-
-
 </div>
