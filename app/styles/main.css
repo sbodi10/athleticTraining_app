@@ -21,12 +21,7 @@ header {
 
 nav {
     font-weight: 200;
-}
-
-nav li {
-    position: relative;
     display: inline-block;
-    padding-right: 40px;
 }
 
 .navbar-form.navbar-right img {
