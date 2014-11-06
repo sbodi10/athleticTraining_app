@@ -11,40 +11,44 @@ ANGULAR JS APPLICATION (ROUTING) -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../bower_components/foundation/css/foundation.css">
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" type="text/css" href="../bower_components/flat-ui/dist/css/flat-ui.min.css">
+
+        <link rel="stylesheet" href="styles/landing.css">
     </head>
     <body>
 
-    <div class="row" ng-app="myApp">
-    
-        <div class="small-11 small-centered columns">
-            <!-- HEADER TEMPLATE (STATIC) -->
-            <header ng-include=" 'templates/nav.html' "></header><hr/>
+    <nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+                    <span class="sr-only">Toggle Navigation</span>
+                </button>
+                <a ui-sref-active="active" ui-sref="home" class="navbar-brand">Athletic Training</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                <div class="navbar-form navbar-right">
+                    <li><a href="#"><span class="fui-user"></span> Sign Up</a></li> |
+                    <li><a href="templates/dashboard.html">Log In <span class="fui-lock"></span></a></li>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-            <!-- MAIN AREA FOR CONTENT (DYNAMIC) -->
-            <div ui-view onload="onViewLoad()"></div>
-            
-            <!-- FOOTER TEMPLATE (STATIC) -->
-            <footer ng-include=" 'templates/footer.html' "></footer>
+    <div class="container">
+        <div class="ontop">
+            <h1>Athletic Training Web Application<br/>
+            <small>Designed Using AnuglarJS</small>
+            </h1>
+            <form action="">
+                <a href=""><span class="fui-user"></span> Sign Up</a> | <a href="templates/dashboard.html">Log In <span class="fui-lock"></span></a>
+            </form>
+        </div>
+    </div>
 
-        </div>  <!-- Close Center -->
 
-    </div><!-- Close Row -->
+    <section class="green"></section>
 
+    <br><br><br>
 
-
-    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../bower_components/foundation/js/foundation.min.js"></script>
-    <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="../bower_components/angular/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
-    <script type="text/javascript" src="../bower_components/bootstrap/dist/js/ui-bootstrap.min.js"></script>
-    <script type="text/javascript" src="scripts/app.js"></script>
-    <script src="scripts/controllers/homeCtrl.js"></script>
-    <script src="scripts/controllers/athletesCtrl.js"></script>
-    <script src="scripts/controllers/addAthleteCtrl.js"></script>
-    <script src="scripts/controllers/injuryCtrl.js"></script>
-    <script src="scripts/controllers/to-doCtrl.js"></script>
-    <script src="scripts/controllers/aboutCtrl.js"></script>
     </body>
 </html>

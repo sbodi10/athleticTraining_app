@@ -1,13 +1,42 @@
 <!-- Swami Shreeji
 Nav.html -->
-<nav>
-<h1 class="jumbotron">Athletic Training Web Application <br/>	
-	<small>Designed Using AnuglarJS</small></h1>
-<!--	<ul class="button-group left">
-	    <li><a ui-sref="home" class="button">Home</a></li>	    
-	    <li><a ui-sref="database" class="button">Athletes</a></li>
-	    <li><a ui-sref="to-do" class="button">To-Do</a></li>
-	</ul> -->
+
+	<nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+					<span class="sr-only">Toggle Navigation</span>
+				</button>
+				<a ui-sref-active="active" ui-sref="home" class="navbar-brand">Athletic Training</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse-01">
+				<div class="navbar-form navbar-left">
+					<ul class="nav">
+						<a ui-sref="home"><span class="fui-home"></span> Dashboard</a>
+						<a ui-sref="athletes"><span class="fui-user"></span> Athletes</a>
+						<a ui-sref="injury"><span class="fui-eye"></span> Injuries</a>
+						<a ui-sref="to-do"><span class="fui-new"></span> To-Do</a>
+						<a ui-sref="about"><span class="fui-info-circle"></span> About</a>
+					</ul>
+				</div>
+				<div class="navbar-form navbar-right">
+					<a href="#"><span class="fui-user"></span> Sapan</a>
+					<a href=""><img src="../images/users/sapan1.jpg" alt=""> <span class="fui-triangle-down-small"></span></a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="ontop">
+			<h1>Athletic Training Web Application<br/>
+			<small>Designed Using AnuglarJS</small>
+			</h1>
+			<form action="">
+				<a href=""><span class="fui-user"></span> Sign Up</a> | <a href="">Log In <span class="fui-lock"></span></a>
+			</form>
+		</div>
+	</div>
 
 	<ul class="nav nav-pills right">
 	    <li ui-sref-active="active"><a ui-sref="home">Dashboard</a></li>
@@ -23,4 +52,3 @@ Nav.html -->
 			<span></span>
 		</div>
 	</div>
-</nav>

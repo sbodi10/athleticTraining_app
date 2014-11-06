@@ -7,9 +7,9 @@ angular.module('myApp')
 		$scope.title = "List of Athletes";
 		$scope.athletes = Athletes;
 
-	            $scope.onViewLoad = function() { 
+	            $scope.onViewLoad = function() {
                 		var bar = $("#bar");
-                		var progress = $(".progress");                      
+                		var progress = $(".progress");
 			progress.fadeIn(50);
 			bar.fadeIn(100);
 			bar.css("width", "0%");

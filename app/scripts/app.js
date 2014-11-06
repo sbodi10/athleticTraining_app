@@ -1,12 +1,14 @@
 //Swami Shreeji
 var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate']);
 
+
+
 myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
-	
+
 	$stateProvider.state('home', {
 		url: '/',
-		templateUrl: 'templates/home.html',
+		templateUrl: '../templates/home.html',
 		controller: 'homeCtrl'
 		//USING A SERVICE
 /*		resolve: {
@@ -20,31 +22,31 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
 
 	$stateProvider.state('athletes', {
 		url: '/athletes',
-		templateUrl: 'templates/athletes.html',
+		templateUrl: '../templates/athletes.html',
 		controller: 'athletesCtrl'
 	})
 
 	$stateProvider.state('addAthlete', {
 		url:'/addAthlete',
-		templateUrl: 'templates/addAthlete.html',
+		templateUrl: '../templates/addAthlete.html',
 		controller: 'addAthleteCtrl'
 	})
 
 	$stateProvider.state('injury', {
 		url: '/injuries',
-		templateUrl: 'templates/injuries.html',
+		templateUrl: '../templates/injuries.html',
 		controller: 'injuryCtrl'
 	})
 
 	$stateProvider.state('to-do', {
 		url: '/to-do',
-		templateUrl: 'templates/to-do.html',
+		templateUrl: '../templates/to-do.html',
 		controller: 'to-doCtrl'
 	})
 
 	$stateProvider.state('about', {
 		url: '/about',
-		templateUrl: 'templates/about.html',
+		templateUrl: '../templates/about.html',
 		controller: 'aboutCtrl'
 	})
 }]);
@@ -151,7 +153,7 @@ myApp.factory('Athletes', function() {
 			report: 'No'
 		}
 	];
-	
+
 	return Athletes;
 })
 
@@ -191,7 +193,7 @@ myApp.factory('Questions', function() {
 			return data;
 		}
 	}
-})
+});
 
 
 

@@ -3,7 +3,8 @@
 
 angular.module('myApp')
 
-	.controller('homeCtrl', ['Reminders', '$scope', function(Reminders, $scope) {
+	.controller('homeCtrl', ['$rootScope', 'Reminders', '$scope', function($rootScope, Reminders, $scope) {
+
 		$scope.title = "The Trainer's Center";
 		$scope.counter = 0;
 		//Select Gender
@@ -11,7 +12,7 @@ angular.module('myApp')
 		$scope.selectedValue = 'Select Gender';
 
 		$scope.reminder = $scope.reminder || Reminders.getData();
-		
+
 		$scope.addReminder = function(userInput) {
 			if(userInput)
 			{
@@ -25,9 +26,9 @@ angular.module('myApp')
 			$scope.counter = $scope.reminder.length;
 		}
 
-		$scope.onViewLoad = function() { 
+		$scope.onViewLoad = function() {
                 		var bar = $("#bar");
-                		var progress = $(".progress");                      
+                		var progress = $(".progress");
 			progress.fadeIn(50);
 			bar.fadeIn(100);
 			bar.css("width", "0%");

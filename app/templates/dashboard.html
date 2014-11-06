@@ -1,0 +1,48 @@
+<!-- Swami Shreeji
+Dashboard.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AT | Dashboard</title>
+        <meta name="description" content="Angular App">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../bower_components/foundation/css/foundation.css">
+        <link rel="stylesheet" type="text/css" href="../bower_components/flat-ui/dist/css/flat-ui.min.css">
+        <link rel="stylesheet" href="../styles/main.css">
+    </head>
+    <body>
+	<div class="container" ng-app="myApp">
+
+	        <div class="small-12 small-centered columns">
+	            <!-- HEADER TEMPLATE (STATIC) -->
+	            <header ng-include=" '../templates/nav.html' "></header><hr/>
+
+	            <!-- MAIN AREA FOR CONTENT (DYNAMIC) -->
+	            <div ui-view onload="onViewLoad()"></div>
+
+	            <!-- FOOTER TEMPLATE (STATIC) -->
+	            <footer ng-include=" '../templates/footer.html' "></footer>
+
+	        </div>  <!-- Close Center -->
+
+	</div><!-- Close Row -->
+
+	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../bower_components/foundation/js/foundation.min.js"></script>
+	<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="../bower_components/angular-animate/angular-animate.min.js"></script>
+	<script type="text/javascript" src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="../scripts/app.js"></script>
+	<script src="../scripts/controllers/homeCtrl.js"></script>
+	<script src="../scripts/controllers/athletesCtrl.js"></script>
+	<script src="../scripts/controllers/addAthleteCtrl.js"></script>
+	<script src="../scripts/controllers/injuryCtrl.js"></script>
+	<script src="../scripts/controllers/to-doCtrl.js"></script>
+	<script src="../scripts/controllers/aboutCtrl.js"></script>
+    </body>
+</html>
