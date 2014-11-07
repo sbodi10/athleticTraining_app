@@ -19,23 +19,21 @@ header {
     margin-top: 50px;
 }
 
+
+/*Nav Button Styling --------------------------------*/
+
 nav {
     font-weight: 200;
     display: inline-block;
 }
 
-.navbar-form.navbar-right img {
+.user {
     width: 35px;
     height: 35px;
     border-radius: 250px;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
     margin-left: 5px;
-}
-
-.navbar-form.navbar-right a:hover img {
-    border: 1px solid #16a085;
-    transition: .25s;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -49,9 +47,31 @@ nav {
     line-height: 23px;
 }
 
-.navbar-collapse .navbar-nav.navbar-left:first-child>li:first-child a {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+.navbar-brand {
+    margin-top: 8px;
+}
+
+.navbar-form.navbar-right {
+    margin-top: 8px;
+}
+
+.navbar-embossed.navbar-inverse .navbar-nav .active>a, .navbar-embossed.navbar-inverse .navbar-nav .open>a {
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,.15);
+}
+
+.dropdown-menu {
+    min-width: 130px;
+    background-color: #34495e;
+}
+
+.dropdown-menu>li>a {
+    color: #fff;
+}
+
+.dropdown-menu>li>a:hover {
+    background-color: #1abc9c;
+    color: #fff;
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,.15);
 }
 
 small {
@@ -81,6 +101,11 @@ small {
 .search {
 	width: 45%;
 	float: left;
+}
+
+
+.ontop {
+    padding-top: 25px;
 }
 
 /*Home Page*/

@@ -20,8 +20,14 @@ Nav.html -->
 					</ul>
 				</div>
 				<div class="navbar-form navbar-right">
-					<a href="#"><span class="fui-user"></span> Sapan <span class="fui-triangle-down-small"></span></a>
-					<a href=""><img src="../images/users/sapan.jpg" alt=""></a>
+					<div class="dropdown">
+						<a href="#" class="dropdown-toggle"><span class="fui-user"> Sapan<span class="caret"></span> <img class="user" src="../images/users/sapan.jpg"></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Account Settings</a></li>
+							<li class="divider"></li>
+							<li><a href="../index.html" class="logout">Log Out <img src="../images/logout.png"></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -38,13 +44,7 @@ Nav.html -->
 		</div>
 	</div>
 
-	<ul class="nav nav-pills right">
-	    <li ui-sref-active="active"><a ui-sref="home">Dashboard</a></li>
-	    <li ui-sref-active="active"><a ui-sref="athletes">Athletes</a></li>
-	    <li ui-sref-active="active"><a ui-sref="injury">Injuries</a></li>
-	    <li ui-sref-active="active"><a ui-sref="to-do">To-Do</a></li>
-	    <li ui-sref-active="active"><a ui-sref="about">About</a></li>
-	</ul><br><br><br>
+
 
 	<!-- HAVE THIS PROGRESS BAR APPEAR AND DISAPPER WHEN DATA IS LOADING -->
 	<div class="progress">
