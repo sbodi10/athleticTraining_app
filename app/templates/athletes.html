@@ -1,15 +1,15 @@
 <!-- Swami Shreeji
 Atheletes.html -->
-<h1>{{title}} 	<a ui-sref="addAthlete"><button class="btn btn-primary btn-lg" id="addAthlete">Add Athlete</button></a></h1>
+<h1>{{title}} 	<a ui-sref="addAthlete"><button class="btn btn-block btn-primary" id="addAthlete">Add Athlete</button></a></h1>
 
 <h3>Search: {{search.$}}</h3>
 <input type="text" ng-model="search.$" class="search">
 <table class="table">
 	<thead>
-		<td>Athlete's Name</td>
+		<td style="width: 155px;">Athlete's Name</td>
 		<td>Age</td>
 		<td>Grade</td>
-		<td>Doctor</td>
+		<td style="width: 100px;">Doctor</td>
 		<td>Phone Number</td>
 		<td>Visted Doctor?</td>
 		<td>Referred for Therapy?</td>
@@ -27,6 +27,7 @@ Atheletes.html -->
 			<td>{{person.therapy}}</td>
 			<td>{{person.insurance}}</td>
 			<td>{{person.report}}</td>
+			<td></td>
 		</tr>
 	</tbody>
 </table>

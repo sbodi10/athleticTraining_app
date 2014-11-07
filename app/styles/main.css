@@ -103,10 +103,18 @@ small {
 	float: left;
 }
 
-
 .ontop {
-    padding-top: 25px;
+    padding-top: 20px;
 }
+
+/* Button Styling */
+.btn.btn-block {
+    min-width: 120px;
+    max-width: 200px;
+    border-radius: 0px;
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,.15);
+}
+
 
 /*Home Page*/
 

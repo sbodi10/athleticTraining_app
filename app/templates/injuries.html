@@ -24,7 +24,7 @@ injuries.html -->
 			<td>{{player.injury}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
 			<td>{{player.description}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
 			<td>{{player.date}}</td>
-			<td><a data-reveal-id="myModal" class="button tiny success"><span class="glyphicon glyphicon-pencil"></span></a></td>
+			<td><a data-reveal-id="myModal" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-pencil"></span></a></td>
 
 			<!-- Hidden Modal for Editing -->
 			<div id="myModal" class="reveal-modal small" data-reveal>
@@ -38,7 +38,7 @@ injuries.html -->
 					<p class="input-group">
 						<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+							<button type="button" class="btn btn-block btn-primary" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 						</span>
 					</p>
 				</div>
