@@ -118,6 +118,21 @@ small {
 
 /*Home Page*/
 
+.bulletinboard {
+    background: url('../images/bulletin_board.jpg') center center no-repeat;
+    background-size: 100% 100%;
+}
+
+#notes {
+    background-color: #FCF0AD;
+    padding: 0px 0px 20px 10px;
+    color: #aaa;
+}
+
+#notes textarea {
+    border: none;
+}
+
 #reminders li {
     list-style: square;
 }
@@ -183,10 +198,6 @@ input.ng-dirty.ng-valid.ng-valid-required.ng-valid-minlength {
 .flip-add {
     margin-left: -150%;
 }
-
-
-
-
 
 
 
