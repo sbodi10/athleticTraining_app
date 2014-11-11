@@ -157,6 +157,15 @@ myApp.factory('Athletes', function() {
 	return Athletes;
 })
 
+myApp.factory('Notes', function() {
+	var data = [ {d: ' ' } ];
+	return {
+		getData: function() {
+			return data;
+		}
+	}
+});
+
 myApp.factory('Reminders', function() {
 	var data = [ { r: 'Learn AngularJS' } ];
 	return {

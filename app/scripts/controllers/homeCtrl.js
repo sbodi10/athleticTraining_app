@@ -3,14 +3,24 @@
 
 angular.module('myApp')
 
-	.controller('homeCtrl', ['$rootScope', 'Reminders', '$scope', function($rootScope, Reminders, $scope) {
+	.controller('homeCtrl', ['$rootScope', 'Notes', 'Reminders', '$scope', function($rootScope, Notes, Reminders, $scope) {
 
 		$scope.title = "The Trainer's Center";
-		$scope.counter = 0;
-		//Select Gender
-		$scope.gender = ['Male', 'Female'];
-		$scope.selectedValue = 'Select Gender';
 
+		//Notes
+		$scope.notes = $scope.notes || Notes.getData();
+
+		$scope.saveNotes = function(userNotes) {
+			if(userNotes) {
+				console.log("Saved Notes!");
+				$scope.notes.push( {d: $scope.userNotes} );
+			}
+		}
+
+
+
+		//Reminders
+		$scope.counter = 0;
 		$scope.reminder = $scope.reminder || Reminders.getData();
 
 		$scope.addReminder = function(userInput) {
@@ -26,6 +36,9 @@ angular.module('myApp')
 			$scope.counter = $scope.reminder.length;
 		}
 
+
+
+		//Progress Bar
 		$scope.onViewLoad = function() {
                 		var bar = $("#bar");
                 		var progress = $(".progress");
