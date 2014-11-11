@@ -29,7 +29,7 @@ angular.module('myApp')
 		$scope.onViewLoad = function() {
                 		var bar = $("#bar");
                 		var progress = $(".progress");
-			progress.fadeIn(50);
+			progress.fadeIn(0);
 			bar.fadeIn(100);
 			bar.css("width", "0%");
 			bar.css("width", "25%");

@@ -18,14 +18,26 @@ body {
 }
 
 .green {
-    margin-top: 575px;
+    margin-top: 505px;
     background-color: rgba(0,200,200,0.7);
-    height: 550px;
+    height: 750px;
+    width: 100%;
+}
+
+.white {
+    height: 750px;
     width: 100%;
 }
 
 .ontop small {
     color: #eee;
+}
+
+.btn.btn-block {
+    min-width: 120px;
+    max-width: 200px;
+    border-radius: 0px;
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,.15);
 }
 
 h1 {

@@ -3,6 +3,7 @@ body {
     color: black;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1 {
@@ -123,14 +124,32 @@ small {
     background-size: 100% 100%;
 }
 
+textarea {
+    background: url('../images/notes.png') repeat-y;
+    background-position: -50px 0px;
+    width: 98%;
+    height: 300px;
+    line-height: 25px;
+    padding: 2px 55px;
+    border: solid 1px #ddd;
+    resize: none;
+}
+
+textarea:focus {
+    background: url('../images/notes.png') repeat-y;
+    background-position: -50px 0px;
+    resize: none;
+}
+
 #notes {
-    background-color: #FCF0AD;
+    background-color: #f1c40f;
     padding: 0px 0px 20px 10px;
     color: #aaa;
 }
 
-#notes textarea {
-    border: none;
+#notes h3 {
+    color: #2c3e50;
+    margin-top: 10px;
 }
 
 #reminders li {
