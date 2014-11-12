@@ -29,6 +29,15 @@ body {
     width: 100%;
 }
 
+.modal-content {
+    border-radius: 0px;
+}
+
+.modal-dialog {
+    margin: 10% auto;
+    border-radius: 0px;
+}
+
 .ontop small {
     color: #eee;
 }
