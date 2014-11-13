@@ -20,7 +20,7 @@ angular.module('myApp')
 
 		//
 		$scope.toggleMin = function() {
-			$scope.minDate = $scope.minDate ? null : new Date();	
+			$scope.minDate = $scope.minDate ? null : new Date();
 		}
 		$scope.toggleMin();
 
@@ -40,10 +40,11 @@ angular.module('myApp')
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		$scope.format = $scope.formats[0];
 
-		$scope.onViewLoad = function() { 
+		//Progress Bar
+		$scope.onViewLoad = function() {
                 		var bar = $("#bar");
-                		var progress = $(".progress");                      
-			progress.fadeIn(50);
+                		var progress = $(".progress");
+			progress.fadeIn(0);
 			bar.fadeIn(100);
 			bar.css("width", "0%");
 			bar.css("width", "25%");
@@ -54,5 +55,22 @@ angular.module('myApp')
 			progress.fadeOut(2000);
 	            }
 
-	
+		//Calendar
+		var date = new Date();
+
+		$scope.getDayName = function(dayNumber) {
+		var weekday = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+		return weekday[date.getDay()];
+		}
+
+		$scope.getMonthName = function(monthNumber) {
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+		return month[date.getMonth()];
+		}
+
+		$('.day_date').text($scope.getDayName());
+		$('.date_number').text(date.getDate());
+		$('.month_date').text($scope.getMonthName() + ' ' + date.getFullYear());
+
+
 }])

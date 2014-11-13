@@ -53,19 +53,23 @@ angular.module('myApp')
 			progress.fadeOut(2000);
 	            }
 
-	            var date = new Date();
-        	     	console.log(date.getMonth());
-	            console.log(date.getFullYear());
+		//Calendar
+		var date = new Date();
 
-	            $scope.getDayName = function(dayNumber) {
-	            	var weekday = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-	            	return weekday[date.getDay()];
-	            }
+		$scope.getDayName = function(dayNumber) {
+		var weekday = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+		return weekday[date.getDay()];
+		}
 
-	            $scope.getMonthName = function(monthNumber) {
-	            	var month = ['Jan', 'Feb', ];
-	            }
+		$scope.getMonthName = function(monthNumber) {
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+		return month[date.getMonth()];
+		}
 
-	            $('.day_date').text($scope.getDayName());
+		$('.day_date').text($scope.getDayName());
+		$('.date_number').text(date.getDate());
+		$('.month_date').text($scope.getMonthName() + ' ' + date.getFullYear());
+
+
 
 }]);
