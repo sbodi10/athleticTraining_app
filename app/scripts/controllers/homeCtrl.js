@@ -52,4 +52,20 @@ angular.module('myApp')
 			bar.fadeOut(2000);
 			progress.fadeOut(2000);
 	            }
+
+	            var date = new Date();
+        	     	console.log(date.getMonth());
+	            console.log(date.getFullYear());
+
+	            $scope.getDayName = function(dayNumber) {
+	            	var weekday = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+	            	return weekday[date.getDay()];
+	            }
+
+	            $scope.getMonthName = function(monthNumber) {
+	            	var month = ['Jan', 'Feb', ];
+	            }
+
+	            $('.day_date').text($scope.getDayName());
+
 }]);

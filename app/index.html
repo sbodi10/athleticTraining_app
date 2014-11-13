@@ -12,7 +12,6 @@ ANGULAR JS APPLICATION (ROUTING) -->
         <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../bower_components/foundation/css/foundation.css">
         <link rel="stylesheet" type="text/css" href="../bower_components/flat-ui/dist/css/flat-ui.min.css">
-
         <link rel="stylesheet" href="styles/landing.css">
     </head>
     <body>
@@ -34,24 +33,29 @@ ANGULAR JS APPLICATION (ROUTING) -->
         </div>
     </nav>
 
+    <section class="main">
     <div class="container">
-        <div class="ontop">
-            <h1>Athletic Training Web Application<br/>
-            <small>Designed Using AnuglarJS</small>
-            </h1>
-            <form action="">
-                <div class="row">
-                        <div class="col-xs-8 col-sm-4">
-                            <a class="btn btn-block btn-lg btn-info" data-toggle="modal" data-target="#signUpModal"><span class="fui-user"></span> Sign Up</a>
-                            <a class="btn btn-block btn-lg btn-success" href="templates/dashboard.html">Log In <span class="fui-lock"></span></a>
-                        </div>
-                    </div>
+            <div class="ontop">
+                <h1>Athletic Training Web Application<br/>
+                <small>Designed Using AnuglarJS</small>
+                </h1>
+                <div class="buttondiv">
+                    <a class="btn btn-block btn-lg btn-info" data-toggle="modal" data-target="#signUpModal"><span class="fui-user"></span> Sign Up</a>
                 </div>
-            </form>
-        </div>
+                <div class="buttondiv">
+                    <a class="btn btn-block btn-lg btn-success" href="templates/dashboard.html">Log In <span class="fui-lock"></span></a>
+                </div>
+            </div>
     </div>
-    <section class="green">
+    </section>
 
+    <section class="green"></section>
+
+    <section class="white"></section>
+
+    <footer class="footer"></footer>
+
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -59,24 +63,23 @@ ANGULAR JS APPLICATION (ROUTING) -->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Train Your Athletes Today!</h4>
+            <h4 class="modal-title" id="myModalLabel">Start Training Your Athletes Today!</h4>
           </div>
             <div class="modal-body">
                 <form action="">
                     <label for="Username">Username</label><input id="Username" type="text">
                     <label for="Email">Email</label><input type="text">
-                    <label for="Password">Password</label><input type="password">
-                    <button type="button" class="btn btn-block btn-success">Start Training!</button>
-                    <button type="button" class="btn btn-block btn-default" data-dismiss="modal">I Quit</button>
+                    <label for="Password">Password</label><input type="password"><br>
+                    <div class="buttondiv">
+                        <button type="button" class="btn btn-block btn-lg btn-info">Start Training!</button>
+                    </div>
+                    <div class="buttondiv">
+                        <button type="button" class="btn btn-block btn-lg btn-danger" data-dismiss="modal">I Quit</button>
+                    </div>
                 </form>
-            </div>
+            </div><br><br>
       </div>
     </div>
-
-    </section>
-
-    <section class="white"></section>
-
 
         <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
