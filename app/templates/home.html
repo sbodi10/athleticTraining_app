@@ -1,7 +1,139 @@
 <!-- Swami Shreeji
 home.html -->
-<h1>{{title}}</h1>
+<div class="ontop">
+	<div class="col-xs-5">
+		<h2>Welcome, <b>Sapan</b></h2>
+		<!-- HAVE THIS PROGRESS BAR APPEAR AND DISAPPER WHEN DATA IS LOADING -->
+		<div class="progress">
+			<div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span></span></div>
+		</div>
+	</div>
 
+	<!-- Sports Filter By Season -->
+	<div class="col-xs-4">
+		<h3>{{ sportsModel || 'All Sports'}}</h3>
+		<div class="btn-group" id="filterSports">
+		        	<label class="btn btn-primary" ng-model="sportsModel" ng-click="allSportsShow()" ng-class="{ active: allSports }" btn-radio="'All Sports'">All Sports</label>
+	        		<label class="btn btn-primary" ng-model="sportsModel" ng-click="fallSportsShow()" ng-class="{ active: fallSports }" btn-radio="'Fall'">Fall</label>
+	        		<label class="btn btn-primary" ng-model="sportsModel" ng-click="winterSportsShow()" ng-class="{ active: winterSports }" btn-radio="'Winter'">Winter</label>
+	       		<label class="btn btn-primary" ng-model="sportsModel" ng-click="springSportsShow()" ng-class="{ active: springSports }" btn-radio="'Spring'">Spring</label>
+	   	 </div>
+	</div>
+
+	<div class="col-xs-3">
+		<div class="today">
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="day_date"></div>
+					<div class="cal"><span class="fui-calendar-solid"></span></div>
+				</div>
+				<div class="col-xs-6">
+					<div class="date_number"></div><div class="month_date"><em></em></div>
+				</div>
+			</div>
+		</div>
+	</div><br>
+	<div class="col-xs-5">
+
+	</div>
+	<div class="col-xs-7"></div>
+
+</div><hr>
+
+<div class="dash_sports">
+	<div class="dash_sports_winter" ng-show="winterSports">
+		<div class="dash_item">
+			<div class="dash_boys_basketball">
+			 	<h4>Boys Basketball</h4>
+			 	<h5>18</h5>
+			 	<h5>3</h5>
+			 </div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_wrestling">
+				<h4>Wrestling Icon</h4>
+				<h5>45</h5>
+				<h5>10</h5>
+			</div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_girls_basketball">
+				<h4>Girls Basketball</h4>
+				<h5>12</h5>
+				<h5>1</h5>
+			</div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_girls_volleyball">
+				<h4>Girls Volleyball</h4>
+				<h5>16</h5>
+				<h5>0</h5>
+			</div>
+		</div>
+	</div><div class="space"><br><hr><br></div>
+	<div class="dash_sports_spring" ng-show="springSports">
+		<div class="dash_item">
+			<div class="dash_baseball">
+			 	<h4>Baseball</h4>
+			 	<h5>25</h5>
+			 	<h5>6</h5>
+			 </div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_track">
+				<h4>Track & Field</h4>
+				<h5>45</h5>
+				<h5>4</h5>
+			</div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_softball">
+				<h4>Softball</h4>
+				<h5>18</h5>
+				<h5>4</h5>
+			</div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_tennis">
+				<h4>Boys Tennis</h4>
+				<h5>12</h5>
+				<h5>0</h5>
+			</div>
+		</div>
+	</div><div class="space"><br><hr><br></div>
+	<div class="dash_sports_fall" ng-show="fallSports">
+		<div class="dash_item">
+			<div class="dash_boys_soccer">
+			 	<h4>Boys Soccer</h4>
+			 	<h5>25</h5>
+			 	<h5>6</h5>
+			 </div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_football">
+				<h4>Football</h4>
+				<h5>45</h5>
+				<h5>4</h5>
+			</div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_girls_soccer">
+				<h4>Girls Soccer</h4>
+				<h5>18</h5>
+				<h5>4</h5>
+			</div>
+		</div>
+		<div class="dash_item">
+			<div class="dash_girls_tennis">
+				<h4>Girls Tennis</h4>
+				<h5>12</h5>
+				<h5>0</h5>
+			</div>
+		</div>
+	</div><div class="space"><br><hr><br></div>
+</div>
+
+<!--
 <div class="bulletinboard">
 
 	<div id="notes" class="col-md-6">
@@ -20,4 +152,4 @@ home.html -->
 		</table>
 	</form>
 
-</div>
+</div> -->

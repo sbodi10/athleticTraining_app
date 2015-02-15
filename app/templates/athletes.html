@@ -1,6 +1,6 @@
 <!-- Swami Shreeji
 Atheletes.html -->
-<h1>{{title}} 	<a ui-sref="addAthlete"><button class="btn btn-block btn-lg btn-primary" id="addAthlete">Add Athlete</button></a></h1>
+<h1>{{title}} 	<a data-reveal-id="addAthlete" class="btn btn-block btn-lg btn-primary">Add Athlete</a></h1>
 
 <h3>Search: {{search.$}}</h3>
 <input type="text" ng-model="search.$" class="search">
@@ -31,3 +31,23 @@ Atheletes.html -->
 		</tr>
 	</tbody>
 </table>
+
+
+
+<!-- Modal for Adding Athlete -->
+
+<div id="addAthlete" class="reveal-modal small" data-reveal>
+<h2>Athlete Name:</h2> <input type="text" style="width: 50%;">
+<h3>Age:</h3> <input type="number" style="width: 50%;">
+<h3>Grade:</h3> <input type="number" style="width: 50%;">
+<h3>Doctor :</h3> <input type="text" style="width: 50%;">
+<a class="close-reveal-modal">&#215;</a>
+
+<!-- Save and Cancel Buttons -->
+<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal">Save</button>
+<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal">Cancel</button>
+</div>
+
+
+
+<script type="text/javascript" src="../bower_components/foundation/js/foundation/foundation.reveal.js"></script>

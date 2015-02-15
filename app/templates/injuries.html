@@ -11,6 +11,8 @@ injuries.html -->
 		<td><h4>Action</h4></td>
 	</thead>
 	<tbody class="injuryTable">
+
+		<!-- Panel Heading -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>Search: {{search.$}}</h3>
@@ -19,6 +21,7 @@ injuries.html -->
 				<input type="text" ng-model="search.$" class="search">
 			</div>
 		</div>
+		<!-- Table Data -->
 		<tr ng-repeat="player in injuries.athletes | filter:search">
 			<td>{{player.name}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
 			<td>{{player.injury}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
@@ -26,27 +29,15 @@ injuries.html -->
 			<td>{{player.date}}</td>
 			<td><a data-reveal-id="myModal" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-pencil"></span></a></td>
 
-			<!-- Hidden Modal for Editing -->
+			<!-- Modal for Editing Player Injury-->
 			<div id="myModal" class="reveal-modal small" data-reveal>
 			<h2>Athlete Name: <h3>{{player.name}}</h3></h2>
 			<h3>Injury: <input type="text" style="width: 50%;" value="{{player.injury}}"></h3>
 			<h3>Description: <textarea cols="30" rows="3"></textarea></h3>
-			<h3>Date:</h3>
-			<!-- Date Selector -->
-			<div class="row">
-				<div class="col-md-6">
-					<p class="input-group">
-						<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-						<span class="input-group-btn">
-							<button type="button" class="btn btn-block btn-lg btn-primary" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-						</span>
-					</p>
-				</div>
-			</div>
-
+			<h3>Date:</h3> <input type="date" style="width: 25%;">
 			<a class="close-reveal-modal">&#215;</a>
 
-
+			<!-- Save and Cancel Buttons -->
 			<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal">Save</button>
 			<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal">Cancel</button>
 			</div>

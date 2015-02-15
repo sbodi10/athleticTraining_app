@@ -6,7 +6,7 @@ ANGULAR JS APPLICATION (ROUTING) -->
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700' rel='stylesheet' type='text/css'>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Athletic Training Software</title>
+        <title>Athletic Training</title>
         <meta name="description" content="Angular App">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -16,11 +16,12 @@ ANGULAR JS APPLICATION (ROUTING) -->
     </head>
     <body>
 
+    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="sr-only"></span>
                 </button>
                 <a ui-sref-active="active" ui-sref="home" class="navbar-brand">Athletic Training</a>
             </div>
@@ -33,6 +34,7 @@ ANGULAR JS APPLICATION (ROUTING) -->
         </div>
     </nav>
 
+    <!-- Main Content including Sign Up and Login Buttons -->
     <section class="main">
     <div class="container">
             <div class="ontop">
@@ -57,7 +59,7 @@ ANGULAR JS APPLICATION (ROUTING) -->
 
     </div>
 
-    <!-- Modal -->
+    <!-- Create User Account Modal -->
     <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -66,22 +68,69 @@ ANGULAR JS APPLICATION (ROUTING) -->
             <h4 class="modal-title" id="myModalLabel">Start Training Your Athletes Today!</h4>
           </div>
             <div class="modal-body">
-                <form action="">
-                    <label for="Username">Username</label><input id="Username" type="text">
-                    <label for="Email">Email</label><input type="text">
-                    <label for="Password">Password</label><input type="password"><br>
+                <form name="createUser" ng-submit="submitForm(createUser.$valid)" novalidate>
+
+                    <!-- Username -->
+                    <div class="form-group" ng-class="{ 'has-error' : createUser.username.$invalid || createUser.username.$dirty }">
+                        <label>Username</label>
+                        <input id="Username" type="text" name="username" ng-model="username" ng-minlength="5" required>
+                        <p ng-show="createUser.username.$invalid && !createUser.username.$dirty" class="help-block">Username is required</p>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" ng-model="email">
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" ng-model="password" required>
+                        <p ng-show="createUser.password.$invalid && !createUser.password.$dirty" class="help-block">Your password must be at least 10 characters</p>
+                    </div>
+
                     <div class="buttondiv">
-                        <button type="button" class="btn btn-block btn-lg btn-info">Start Training!</button>
+                        <button type="button" class="btn btn-block btn-lg btn-info" ng-disabled="createUser.$invalid">Start Training!</button>
                     </div>
                     <div class="buttondiv">
                         <button type="button" class="btn btn-block btn-lg btn-danger" data-dismiss="modal">I Quit</button>
                     </div>
                 </form>
             </div><br><br>
+
       </div>
     </div>
 
-        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/foundation/js/foundation.min.js"></script>
+    <script type="text/javascript" src="../bower_components/flat-ui/dist/js/flat-ui.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="../scripts/app.js"></script>
+
+
+    <script>/*
+    var userCreation = angular.module('userCreation', []);
+
+    userCreation.controller('mainController', ['$scope', function($scope) {
+
+        $scope.submitForm = function(isValid) {
+
+            if(isValid) {
+                alert("Our Form Works!");
+            }
+
+        };
+
+    }]);
+
+    */</script>
+
+
+
+
     </body>
 </html>

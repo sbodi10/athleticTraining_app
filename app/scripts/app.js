@@ -26,12 +26,6 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
 		controller: 'athletesCtrl'
 	})
 
-	$stateProvider.state('addAthlete', {
-		url:'/addAthlete',
-		templateUrl: '../templates/addAthlete.html',
-		controller: 'addAthleteCtrl'
-	})
-
 	$stateProvider.state('injury', {
 		url: '/injuries',
 		templateUrl: '../templates/injuries.html',

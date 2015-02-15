@@ -217,6 +217,9 @@ input.ng-dirty.ng-valid.ng-valid-required.ng-valid-minlength {
     margin-left: -150%;
 }
 
+.ng-valid {
+    background-color: green;
+}
 
 
 
