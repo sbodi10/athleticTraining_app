@@ -293,6 +293,16 @@ input.ng-dirty.ng-valid.ng-valid-required.ng-valid-minlength {
     margin-bottom: 20px;
 }
 
+.sportsImage {
+    position: relative;
+    left: 65px;
+}
+
+.bottomBanner {
+    padding: 2px 2px 2px 2px;
+    background-color: white;
+}
+
 .dash_sports_fall {
     -webkit-column-count: 4; /* Chrome, Safari, Opera */
     -moz-column-count: 4; /* Firefox */
@@ -327,66 +337,68 @@ input.ng-dirty.ng-valid.ng-valid-required.ng-valid-minlength {
     width: 225px;
     color: white;
     border-radius: 2px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 12px;
 }
 
 .dash_boys_basketball {
     background-color: #F39C12;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_wrestling {
     background-color: #C0392B;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_girls_basketball {
     background-color: #D35400;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_girls_volleyball {
     background-color: #16A085;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_baseball {
     background-color: #1ABC9C;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_track {
     background-color: #27AE60;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_softball {
     background-color: #2ECC71;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_tennis {
     background-color: #3498DB;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_boys_soccer {
     background-color: #2ECC71;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_football {
     background-color: #2C3E50;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_girls_soccer {
     background-color: #27AE60;
-    padding: 10px;
+    padding: 8px;
 }
 
 .dash_girls_tennis {
     background-color: #2980B9;
-    padding: 10px;
+    padding: 8px;
 }
 
 /* when hiding the picture */
