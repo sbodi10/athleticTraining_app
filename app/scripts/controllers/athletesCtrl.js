@@ -3,9 +3,36 @@
 
 angular.module('myApp')
 
-	.controller('athletesCtrl', ['$scope', 'Athletes', function($scope, Athletes) {
+	.controller('athletesCtrl', ['$scope', 'AthletesFactory', function($scope, AthletesFactory) {
 		$scope.title = "List of Athletes";
-		$scope.athletes = Athletes;
+		$scope.athletes = AthletesFactory;
+
+
+		//Loads Overlay with Data from Clicked Row
+		$scope.rowClick = function(person) {
+			$scope.person = person;
+			console.log(person);
+			$('#editAthlete').foundation('reveal', 'open');
+		}
+
+		//NOT WORKING - Closes the overlay
+		$scope.closeEditAthleteModal = function() {
+			$('#editAthlete').foundation('reveal', 'close');
+		}
+
+		$scope.cancelButton = function() {
+			$('#athleteName').val('');
+			$scope.newAthlete = '';
+			$('#age').val('');
+			$('[name=grade]').val('');
+			$('#number').val('');
+			$('#doctor').val('');
+			$('#doctorNumber').val('');
+			$('[name=visitedDoctor]').val('');
+			$('[name=therapy]').val('');
+			$('[name=insuranceForm]').val('');
+			$('[name=reportFiled]').val('');
+		}
 
 		//Progress Bar
 		$scope.onViewLoad = function() {
@@ -22,6 +49,7 @@ angular.module('myApp')
 			progress.fadeOut(2000);
 	            }
 
+/*
 		//Calendar
 		var date = new Date();
 
@@ -38,5 +66,5 @@ angular.module('myApp')
 		$('.day_date').text($scope.getDayName());
 		$('.date_number').text(date.getDate());
 		$('.month_date').text($scope.getMonthName() + ' ' + date.getFullYear());
-
+*/
 }])

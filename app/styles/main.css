@@ -152,6 +152,11 @@ small {
     top: 3px;
 }
 
+.buttondiv {
+    float: left;
+    margin-right: 10px;
+}
+
 .injuryTable tr:hover td {
             /*Gray background-color: #F0F0F0;*/
             /*BLUE*/
@@ -473,3 +478,7 @@ input.ng-dirty.ng-valid.ng-valid-required.ng-valid-minlength {
     opacity: 0;
   }
 }
+
+
+
+/* List of Athlete's Page */

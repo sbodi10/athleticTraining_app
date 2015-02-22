@@ -11,7 +11,7 @@ home.html -->
 
 	<!-- Sports Filter By Season -->
 	<div class="col-xs-4">
-		<h3>{{ sportsModel || 'All Sports'}}</h3>
+		<h3>{{ sportsModel || 'All Sports'}} | {{ sportsSearch }}</h3>
 		<div class="btn-group" id="filterSports">
 		        	<label class="btn btn-primary" ng-model="sportsModel" ng-click="allSportsShow()" ng-class="{ active: allSports }" btn-radio="'All Sports'">All Sports</label>
 	        		<label class="btn btn-primary" ng-model="sportsModel" ng-click="fallSportsShow()" ng-class="{ active: fallSports }" btn-radio="'Fall'">Fall</label>
@@ -21,7 +21,10 @@ home.html -->
 	</div>
 
 	<div class="col-xs-3">
-		<div class="today">
+		<div class="todo-search">
+			<input type="search" class="todo-search-field" value placeholder="Search" ng-model="sportsSearch">
+		</div>
+		<!--<div class="today">
 			<div class="row">
 				<div class="col-xs-6">
 					<div class="day_date"></div>
@@ -31,7 +34,7 @@ home.html -->
 					<div class="date_number"></div><div class="month_date"><em></em></div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div><br>
 	<div class="col-xs-5">
 

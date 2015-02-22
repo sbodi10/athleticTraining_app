@@ -3,9 +3,21 @@
 
 angular.module('myApp')
 
-	.controller('injuryCtrl', ['$scope', 'Injuries', function($scope, Injuries) {
+	.controller('injuryCtrl', ['$scope', 'InjuriesFactory', function($scope, InjuriesFactory) {
 		$scope.title = "Injured Athletes";
-		$scope.injuries = Injuries;
+		$scope.injuries = InjuriesFactory;
+
+		//Loads Overlay with Data from Clicked Row
+		$scope.rowClick = function(injury) {
+			$scope.injury = injury;
+			console.log(injury);
+			$('#editInjury').foundation('reveal', 'open');
+		}
+
+		//NOT WORKING - Closes the overlay
+		$scope.closeEditInjuryModal = function() {
+			$('#editInjury').foundation('reveal', 'close');
+		}
 
 		//Progress Bar
 		$scope.onViewLoad = function() {

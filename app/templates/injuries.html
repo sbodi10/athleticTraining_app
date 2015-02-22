@@ -22,35 +22,43 @@ injuries.html -->
 			</div>
 		</div>
 		<!-- Table Data -->
-		<tr ng-repeat="player in injuries.athletes | filter:search">
-			<td>{{player.name}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
-			<td>{{player.injury}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
-			<td>{{player.description}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
-			<td>{{player.date}}</td>
-			<td><a data-reveal-id="myModal" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-pencil"></span></a></td>
-
-			<!-- Modal for Editing Player Injury-->
-			<div id="myModal" class="reveal-modal small" data-reveal>
-			<h2>Athlete Name: <h3>{{player.name}}</h3></h2>
-			<h3>Injury: <input type="text" style="width: 50%;" value="{{player.injury}}"></h3>
-			<h3>Description: <textarea cols="30" rows="3"></textarea></h3>
-			<h3>Date:</h3> <input type="date" style="width: 25%;">
-			<a class="close-reveal-modal">&#215;</a>
-
-			<!-- Save and Cancel Buttons -->
-			<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal">Save</button>
-			<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal">Cancel</button>
-			</div>
+		<tr ng-repeat="injury in injuries.data | filter:search">
+			<td>{{injury.name}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
+			<td>{{injury.injury}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
+			<td>{{injury.description}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
+			<td>{{injury.date}}</td>
+			<td><a data-reveal-id="myModal" class="btn btn-block btn-primary" ng-click="rowClick(injury)"><span class="glyphicon glyphicon-pencil"></span></a></td>
 		</tr>
 	</tbody>
 </table>
 
 
-	<script type="text/javascript" src="../bower_components/foundation/js/foundation/foundation.reveal.js"></script>
+	<!-- Modal for Editing Player Injury-->
+	<div id="editInjury" class="reveal-modal large" data-reveal>
+	<header>
+		<h5>Edit Injury</h5><hr>
+	</header>
+	<div class="col-xs-6">
+		<h6><b>Athlete's Name</b>:  {{injury.name}}</h6>
+		<h6>Injury:</h6> <input type="text" style="width: 50%;" value="{{injury.injury}}">
+	</div>
+	<div class="col-xs-6">
+		<h6 style="margin-top: 50px;">Date:</h6> <input type="date" style="width: 35%;" value="{{injury.date}}">
+	</div>
+	<div class="col-xs-12">
+		<h6>Description:</h6> <textarea cols="30" rows="5">{{injury.description}}</textarea>
+	</div>
+	<a class="close-reveal-modal" ng-click="closeEditInjuryModal()">&#215;</a><hr>
 
+	<!-- Save and Cancel Buttons -->
+	<div class="buttondiv">
+		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal">Save Athlete</button>
+	</div>
+	<div class="buttondiv">
+		<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal" ng-click="closeEditInjuryModal()">Cancel</button>
+	</div>
+	</div>
 
-	<!-- Other JS plugins can be included here -->
-
-	<script>
-	$(document).foundation();
-	</script>
+<script>
+$(document).foundation();
+</script>
