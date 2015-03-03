@@ -3,10 +3,68 @@
 
 angular.module('myApp')
 
-	.controller('athletesCtrl', ['$scope', 'AthletesFactory', function($scope, AthletesFactory) {
+	.controller('athletesCtrl', ['$scope', '$firebase', 'AthletesService', function($scope, $firebase, AthletesService) {
 		$scope.title = "List of Athletes";
-		$scope.athletes = AthletesFactory;
+		$scope.athletes = AthletesService.getAthletes();
 
+		/*$scope.addAthlete = function() {
+			AthletesService.addAthlete(person);
+		};
+
+		$scope.editAthlete = function(id) {
+			AthletesService.editAthlete(person);
+		};
+
+		$scope.deleteAthlete = function(id) {
+			AthletesService.deleteAthlete(person)
+		};
+		*/
+
+		//$scope.addNewAthlete = saveNewAthlete();
+
+		/*$scope.saveNewAthlete = function() {
+
+			var NewAthlete = Parse.Object.extend("Popat");
+			var newAthlete = new Popat();
+
+			var athleteName = $('#athleteName').val();
+			var athleteAge = $('#age').val();
+			var athleteGrade = $('#grade').val();
+			var athletePhoneNumber = ('#number').val();
+			var athleteDoctor = $('#doctor').val();
+			var athleteDoctorNumber = $('#doctorNumber').val();
+			var athleteVistedDoctor = $('#visitedDoctor').val();
+			var athleteTherapy = $('#therapy').val();
+			var athleteForm = $('#insuranceForm').val();
+			var athleteReport = $('#reportFiled').val();
+
+			newAthlete.set("athleteName", athleteName);
+			newAthlete.set("athleteAge", athleteAge);
+			newAthlete.set("athleteGrade", athleteGrade);
+			newAthlete.set("athletePhoneNumber", athletePhoneNumber);
+			newAthlete.set("athleteDoctor", athleteDoctor);
+			newAthlete.set("athleteDoctorNumber", athleteDoctorNumber);
+			newAthlete.set("athleteVistedDoctor", athleteVistedDoctor);
+			newAthlete.set("athleteTherapy", athleteTherapy);
+			newAthlete.set("athleteForm", athleteForm);
+			newAthlete.set("athleteReport", athleteReport);
+
+			newAthlete.save(null, {
+				success: function() {
+					console.log("Saved Athlete");
+					console.log(newAthlete);
+					closeAddAthleteModal();
+				},
+				error: function(athlete, error) {
+					console.log("Error -> Did not save Athlete");
+					console.log(error.message);
+				}
+			})
+		}*/
+
+		$scope.closeAddAthleteModal = function() {
+			$('#addAthlete').foundation('reveal', 'close');
+		}
 
 		//Loads Overlay with Data from Clicked Row
 		$scope.rowClick = function(person) {

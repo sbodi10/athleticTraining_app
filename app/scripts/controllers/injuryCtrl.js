@@ -3,9 +3,9 @@
 
 angular.module('myApp')
 
-	.controller('injuryCtrl', ['$scope', 'InjuriesFactory', function($scope, InjuriesFactory) {
+	.controller('injuryCtrl', ['$scope', 'InjuriesService', function($scope, InjuriesService) {
 		$scope.title = "Injured Athletes";
-		$scope.injuries = InjuriesFactory;
+		$scope.injuries = InjuriesService.getInjuries();
 
 		//Loads Overlay with Data from Clicked Row
 		$scope.rowClick = function(injury) {

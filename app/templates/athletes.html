@@ -17,16 +17,16 @@ Atheletes.html -->
 		<td>Accident Report Filed?</td>
 	</thead>
 	<tbody class="athleteTable">
-		<tr ng-repeat="athlete in athletes.data | filter: search" ng-click="rowClick(athlete)">
-			<td>{{athlete.name}}</td>
-			<td>{{athlete.age}}</td>
-			<td>{{athlete.grade}}</td>
-			<td>{{athlete.doctor}}</td>
-			<td>{{athlete.phone}}</td>
-			<td>{{athlete.gotoDoctor}}</td>
-			<td>{{athlete.therapy}}</td>
-			<td>{{athlete.insurance}}</td>
-			<td>{{athlete.report}}</td>
+		<tr ng-repeat="person in athletes | filter: search" ng-click="rowClick(person)">
+			<td>{{person.name}}</td>
+			<td>{{person.age}}</td>
+			<td>{{person.grade}}</td>
+			<td>{{person.doctor}}</td>
+			<td>{{person.phone}}</td>
+			<td>{{person.gotoDoctor}}</td>
+			<td>{{person.therapy}}</td>
+			<td>{{person.insurance}}</td>
+			<td>{{person.report}}</td>
 		</tr>
 	</tbody>
 </table>
@@ -84,7 +84,7 @@ Atheletes.html -->
 	<a class="close-reveal-modal">&#215;</a>
 	<!-- Save and Cancel Buttons -->
 	<div class="buttondiv">
-		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal">Save Athlete</button>
+		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal" ng-click="">Save Athlete</button>
 	</div>
 	<div class="buttondiv">
 		<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal" ng-click="cancelButton()">Cancel</button>

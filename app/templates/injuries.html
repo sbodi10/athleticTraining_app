@@ -22,7 +22,7 @@ injuries.html -->
 			</div>
 		</div>
 		<!-- Table Data -->
-		<tr ng-repeat="injury in injuries.data | filter:search">
+		<tr ng-repeat="injury in injuries | filter:search">
 			<td>{{injury.name}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
 			<td>{{injury.injury}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
 			<td>{{injury.description}}<span style="margin-left: 30px;" class="glyphicon glyphicon-arrow-right"</td>
