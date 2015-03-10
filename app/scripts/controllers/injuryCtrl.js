@@ -7,6 +7,19 @@ angular.module('myApp')
 		$scope.title = "Injured Athletes";
 		$scope.injuries = InjuriesService.getInjuries();
 
+		$scope.updateInjury = function(injury) {
+			var injury = this.injury;
+			//Need to add something here to update injury object
+			var person = $scope.injuries.$getRecord(injury);
+			InjuriesService.updateInjury(injury);
+			console.log("Person Updated and Saved");
+			$scope.closeEditInjuryModal();
+		};
+
+		$scope.addInjury = function(inj) {
+			$scope.injuries.$add({name: $scope.name, injury: $scope.injury, description: $scope.description, date: $scope.date});
+		}
+
 		//Loads Overlay with Data from Clicked Row
 		$scope.rowClick = function(injury) {
 			$scope.injury = injury;
@@ -16,6 +29,7 @@ angular.module('myApp')
 
 		//NOT WORKING - Closes the overlay
 		$scope.closeEditInjuryModal = function() {
+			console.log("Closing Modal");
 			$('#editInjury').foundation('reveal', 'close');
 		}
 

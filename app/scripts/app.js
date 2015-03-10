@@ -73,12 +73,11 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
 //Athletes Service Using Firebase
 myApp.factory('AthletesService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
 	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/athletes');
-	var athletes = $firebase(ref);
+	var athletes = $firebase(ref).$asObject();
 
 	var Athletes = {
 		getAthletes : function() {
-			var athletesObject = athletes.$asObject();
-			return athletesObject;
+			return athletes;
 		},
 
 		editAthlete : function(person) {
@@ -92,12 +91,17 @@ myApp.factory('AthletesService', ['$firebase', 'FIREBASE_URI', function($firebas
 //Injuries Service Using Firebase
 myApp.factory('InjuriesService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
 	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/injuries');
-	var injuries = $firebase(ref);
+	var injuries = $firebase(ref).$asObject();
 
 	var Injuries = {
 		getInjuries : function() {
-			var injuriesObject = injuries.$asObject();
-			return injuriesObject;
+			return injuries;
+		},
+
+		updateInjury : function(person) {
+			injuries.$save(person).then(function() {
+				console.log(person + " has been saved");
+			});
 		}
 	}
 
@@ -105,33 +109,18 @@ myApp.factory('InjuriesService', ['$firebase', 'FIREBASE_URI', function($firebas
 }])
 
 
-myApp.factory('Notes', function() {
-	var data = [ {d: ' ' } ];
-	return {
-		getData: function() {
-			return data;
-		}
-	}
-});
+myApp.factory('todoService', ['$http', function($http) {
 
+	var url = 'https://athletictrainingapp.firebaseio.com/todo.json';
+	var tasks = {};
 
-myApp.factory('Reminders', function() {
-	var data = [ { r: 'Learn AngularJS' } ];
-	return {
-		getData : function() {
-			return data;
-		}
-	}
-});
+	tasks.getTasks = function() {
+		return $http.get(url);
+	};
 
+	tasks.addTask = function(newtask) {
+		return $http.post(url, newtask);
+	};
 
-myApp.factory('Quiz', function() {
-	var data = [ {q: 'Sapan Bodiwala', a: 'Dashboard'},
-		{q: 'Arun', a: 'Checklist'} ];
-
-	return {
-		getData : function() {
-			return data;
-		}
-	}
-});
+	return tasks;
+}]);

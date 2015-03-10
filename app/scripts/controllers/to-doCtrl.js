@@ -3,62 +3,50 @@
 
 angular.module('myApp')
 
-	.controller('to-doCtrl', ['Quiz', '$scope', function(Quiz, $scope) {
+	.controller('to-doCtrl', ['$scope', 'todoService', function($scope, todoService) {
 		$scope.title = "To-Do List";
 
-		$scope.quizzes = $scope.quizzes || Quiz.getData();
-		$scope.addItem = function(question, answer) {
+		//Binds the todoService with the todo variable within the scope for the view to access
+		function getTasks () {
+			todoService.getTasks()
 
-			//If resource and task are both filled.. then add task works
-			if(question && answer) {
-				$scope.quizzes.push( {q: $scope.formQuestion, a: $scope.formAnswer});
-				$scope.formQuestion = '';
-				$scope.formAnswer = '';
-			}
-		}
-		$scope.removeLast = function() {
-			$scope.quizzes.pop();
-		}
+			.success(function(response) {
+				$scope.todo = response;
+			})
 
-		$scope.getTotal = function() {
-			return $scope.quizzes.length;
+			.error(function(error) {
+				$scope.status = "Unable to load ToDo Tasks " + error.message;
+			});
 		}
 
-		$scope.clearList = function() {
-			$scope.quizzes = [];
-		}
+		//Call getTasks to grab data
+		getTasks();
+
+		//Adds Task to Todo List
+		$scope.addTask = function() {
+
+			var newTask = {
+				user : $scope.user,
+				task : $scope.task
+			};
+
+			todoService.addTask(newTask)
+
+				.success(function(response) {
+					console.log("New Task Added!");
+					$scope.user = '';
+					$scope.task = '';
+					getTasks();
+				})
+
+				.error(function(error) {
+					$scope.noTask = "Task Could Not Be Added: " + error;
+				});
+		};
 
 
-		/*
-		1. Enable button once both inputs have text entered
-		2. Onblur function, highlight input box
-		*/
 
-		var resource = $("#resource");
-		var task = $("#task");
-		var formQuestion = $("#formQuestion");
-		var formAnswer = $("#formAnswer");
-		var addTask = $("#addTask");
 
-		addTask.attr("disabled", true);
-
-		resource.keyup(function() {
-			if(resource.val().length >= 3 && task.val().length >= 3) {
-				addTask.attr("disabled", false);
-			}
-			else {
-				addTask.attr("disabled", true);
-			}
-		});
-
-		task.keyup(function() {
-			if(resource.val().length >= 3 && task.val().length >= 3) {
-				addTask.attr("disabled", false);
-			}
-			else {
-				addTask.attr("disabled", true);
-			}
-		});
 
 		//Progress Bar
 		$scope.onViewLoad = function() {

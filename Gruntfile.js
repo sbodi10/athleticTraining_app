@@ -60,7 +60,21 @@ module.exports = function (grunt) {
                     '.tmp/styles/{,*/}*.css',
                     '<%= config.app %>/images/{,*/}*'
                 ]
-            }
+            },
+            jscat: {
+                files:['app/scripts/**/*.js'],
+                tasks: ['concat:js'],
+            },
+            csscat: {
+                files:['app/styles/*.js'],
+                tasks: ['concat:css'],
+            },
+            /*ngmin: {
+                controllers: {
+                    src: ['app/scripts/controllers/aboutCtrl.js', 'app/scripts/controllers/athletesCtrl.js', 'app/scripts/controllers/homeCtrl.js', 'app/scripts/controllers/injuryCtrl.js', 'app/scripts/controllers/landingCtrl.js', 'app/scripts/controllers/to-doCtrl.js',],
+                    dest: 'app/scripts/one.js'
+                },
+            }*/
         },
 
         // The actual grunt server settings
@@ -223,7 +237,18 @@ module.exports = function (grunt) {
                 }]
             }
         },
-
+        // By default, your `index.html`'s <!-- Usemin block --> will take care of
+        // minification. These next options are pre-configured if you do not wish
+        // to use the Usemin blocks.
+        // uglify: {
+        //     dist: {
+        //         files: {
+        //             '<%= config.dist %>/scripts/scripts.js': [
+        //                 '<%= config.dist %>/scripts/scripts.js'
+        //             ]
+        //         }
+        //     }
+        // },
         htmlmin: {
             dist: {
                 options: {
@@ -236,73 +261,77 @@ module.exports = function (grunt) {
                     removeRedundantAttributes: true,
                     useShortDoctype: true
                 },
+            files: {
+                'build/index.html' : 'app/index.html',
+                'build/templates/about.html' : 'app/templates/about.html',
+                'build/templates/athletes.html' : 'app/templates/athletes.html',
+                'build/templates/dashboard.html' : 'app/templates/dashboard.html',
+                'build/templates/footer.html' : 'app/templates/footer.html',
+                'build/templates/home.html' : 'app/templates/home.html',
+                'build/templates/injuries.html' : 'app/templates/injuries.html',
+                'build/templates/nav.html' : 'app/templates/nav.html',
+                'build/templates/to-do.html' : 'app/templates/to-do.html'
+                }
+            }
+        },
+        cssmin: {
+            target: {
                 files: [{
                     expand: true,
-                    cwd: '<%= config.dist %>',
-                    src: '{,*/}*.html',
-                    dest: '<%= config.dist %>'
+                    cwd: 'build/app/css',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'build/app/css',
+                    ext: '.min.css'
                 }]
             }
         },
-
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        // cssmin: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/styles/main.css': [
-        //                 '.tmp/styles/{,*/}*.css',
-        //                 '<%= config.app %>/styles/{,*/}*.css'
-        //             ]
-        //         }
-        //     }
-        // },
-        // uglify: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/scripts/scripts.js': [
-        //                 '<%= config.dist %>/scripts/scripts.js'
-        //             ]
-        //         }
-        //     }
-        // },
-        // concat: {
-        //     dist: {}
-        // },
-
+        concat: {
+            js: {
+                src: ['app/scripts/app.js', 'app/scripts/controllers/*.js'],
+                dest: 'build/app/js/app.js',
+            },
+            css: {
+                src: ['app/styles/*.css'],
+                dest: 'build/app/css/styles.css',
+            },
+         },
+         /*************************************
+         *    Add Angular Minification       *
+         *                                                  *
+         *************************************/
+        ngmin: {
+            controllers: {
+                src: ['build/app/js/app.js'],
+                dest: 'build/app/js/app.js'
+            }
+        },
         // Copies remaining files to places other tasks can use
         copy: {
-            dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= config.app %>',
-                    dest: '<%= config.dist %>',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        'images/{,*/}*.webp',
-                        '{,*/}*.html',
-                        'styles/fonts/{,*/}*.*'
-                    ]
-                }]
+            files: {
+                'build/index.html' : 'app/index.html',
+                'build/templates/about.html' : 'app/templates/about.html',
+                'build/templates/athletes.html' : 'app/templates/athletes.html',
+                'build/templates/dashboard.html' : 'app/templates/dashboard.html',
+                'build/templates/footer.html' : 'app/templates/footer.html',
+                'build/templates/home.html' : 'app/templates/home.html',
+                'build/templates/injuries.html' : 'app/templates/injuries.html',
+                'build/templates/nav.html' : 'app/templates/nav.html',
+                'build/templates/to-do.html' : 'app/templates/to-do.html'
             },
             styles: {
-                expand: true,
-                dot: true,
-                cwd: '<%= config.app %>/styles',
-                dest: '.tmp/styles/',
-                src: '{,*/}*.css'
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.app %>/styles',
+                    dest: '.tmp/styles/',
+                    src: '{,*/}*.css'
             }
         },
-
         // Run some tasks in parallel to speed up build process
         concurrent: {
             server: [
                 'copy:styles'
-            ],
-            test: [
+           ],
+           test: [
                 'copy:styles'
             ],
             dist: [
@@ -367,4 +396,17 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+
+    //grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-ngmin');
+    //Build Task -- run grunt sbodi
+    //1. Copies html files (index.html & templates)
+    //2. Concats all css and js files
+    //3. Minifies css file
+    //4. Minifies angularjs files
+    //5. Starts the server
+    grunt.registerTask('sbodi', ['copy', 'concat', 'cssmin', 'ngmin', 'server']);
 };
