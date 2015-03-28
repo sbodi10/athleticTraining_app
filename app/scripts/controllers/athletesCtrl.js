@@ -3,93 +3,101 @@
 
 angular.module('myApp')
 
-	.controller('athletesCtrl', ['$scope', '$firebase', 'AthletesService', function($scope, $firebase, AthletesService) {
+	.controller('athletesCtrl', ['$scope', '$firebase', 'FIREBASE_URI', 'AthletesService', function($scope, $firebase, FIREBASE_URI, AthletesService) {
 		$scope.title = "List of Athletes";
-		$scope.athletes = AthletesService.getAthletes();
+		$scope.athletes = AthletesService;
+		$scope.gradeOptions = [
+			{
+				grade: '9'
+			},
+			{
+				grade: '10'
+			},
+			{
+				grade: '11'
+			},
+			{
+				grade: '12'
+			}
+		];
 
-		/*$scope.addAthlete = function() {
-			AthletesService.addAthlete(person);
-		};
+		//Save New Athlete
+		$scope.saveNewAthlete = function() {
 
-		$scope.editAthlete = function(id) {
-			AthletesService.editAthlete(person);
-		};
+			var newAthlete = {
+				 name : $scope.athleteName,
+				 age : $scope.age,
+				 grade : $scope.grade,
+				 number : $scope.number,
+				 doctor : $scope.doctor,
+				 doctorNumber : $scope.doctorNumber,
+				 visitedDoctor : $scope.visitedDoctor,
+				 therapy : $scope.therapy,
+				 insuranceForm : $scope.insuranceForm,
+				 reportFiled : $scope.reportFiled
+			};
 
-		$scope.deleteAthlete = function(id) {
-			AthletesService.deleteAthlete(person)
-		};
-		*/
+			var athletesList = AthletesService;
 
-		//$scope.addNewAthlete = saveNewAthlete();
+			athletesList.$add(newAthlete);
 
-		/*$scope.saveNewAthlete = function() {
+			console.log("New Athlete Added!");
+			$scope.athleteName = '';
+			$scope.age = '';
+			$scope.grade = '';
+			$scope.number = '';
+			$scope.doctor = '';
+			$scope.doctorNumber = '';
+			$scope.visitedDoctor = '';
+			$scope.therapy = '';
+			$scope.insuranceForm = '';
+			$scope.reportFiled = '';
 
-			var NewAthlete = Parse.Object.extend("Popat");
-			var newAthlete = new Popat();
-
-			var athleteName = $('#athleteName').val();
-			var athleteAge = $('#age').val();
-			var athleteGrade = $('#grade').val();
-			var athletePhoneNumber = ('#number').val();
-			var athleteDoctor = $('#doctor').val();
-			var athleteDoctorNumber = $('#doctorNumber').val();
-			var athleteVistedDoctor = $('#visitedDoctor').val();
-			var athleteTherapy = $('#therapy').val();
-			var athleteForm = $('#insuranceForm').val();
-			var athleteReport = $('#reportFiled').val();
-
-			newAthlete.set("athleteName", athleteName);
-			newAthlete.set("athleteAge", athleteAge);
-			newAthlete.set("athleteGrade", athleteGrade);
-			newAthlete.set("athletePhoneNumber", athletePhoneNumber);
-			newAthlete.set("athleteDoctor", athleteDoctor);
-			newAthlete.set("athleteDoctorNumber", athleteDoctorNumber);
-			newAthlete.set("athleteVistedDoctor", athleteVistedDoctor);
-			newAthlete.set("athleteTherapy", athleteTherapy);
-			newAthlete.set("athleteForm", athleteForm);
-			newAthlete.set("athleteReport", athleteReport);
-
-			newAthlete.save(null, {
-				success: function() {
-					console.log("Saved Athlete");
-					console.log(newAthlete);
-					closeAddAthleteModal();
-				},
-				error: function(athlete, error) {
-					console.log("Error -> Did not save Athlete");
-					console.log(error.message);
-				}
-			})
-		}*/
-
-		$scope.closeAddAthleteModal = function() {
 			$('#addAthlete').foundation('reveal', 'close');
-		}
+		};
+
+		//THIS NEEDS TO BE FIXED
+		$scope.updateAthlete = function(person) {
+			var athletesList = AthletesService;
+			athletesList.$save(this.person);
+			console.log(this.person.name + " has been updated!");
+			$('#editAthlete').foundation('reveal', 'close');
+			//closeEditAthleteModal();
+		};
+
+		$scope.deleteAthlete = function(person) {
+			var athletesList = AthletesService;
+			athletesList.$remove(this.person);
+			$('#editAthlete').foundation('reveal', 'close');
+		};
 
 		//Loads Overlay with Data from Clicked Row
 		$scope.rowClick = function(person) {
-			$scope.person = person;
+			$scope.person = this.person;
 			console.log(person);
 			$('#editAthlete').foundation('reveal', 'open');
 		}
 
-		//NOT WORKING - Closes the overlay
-		$scope.closeEditAthleteModal = function() {
-			$('#editAthlete').foundation('reveal', 'close');
-		}
+		// $scope.closeAddAthleteModal = function() {
+		// 	$(this).foundation('reveal', 'close');
+		// }
+
+		// $scope.closeEditAthleteModal = function() {
+		// 	$('#editAthlete').foundation('reveal', 'close');
+		// }
 
 		$scope.cancelButton = function() {
-			$('#athleteName').val('');
 			$scope.newAthlete = '';
-			$('#age').val('');
-			$('[name=grade]').val('');
-			$('#number').val('');
-			$('#doctor').val('');
-			$('#doctorNumber').val('');
-			$('[name=visitedDoctor]').val('');
-			$('[name=therapy]').val('');
-			$('[name=insuranceForm]').val('');
-			$('[name=reportFiled]').val('');
+			$scope.athleteName = '';
+			$scope.age = '';
+			$scope.grade = '';
+			$scope.number = '';
+			$scope.doctor = '';
+			$scope.doctorNumber = '';
+			$scope.visitedDoctor = '';
+			$scope.therapy = '';
+			$scope.insuranceForm = '';
+			$scope.reportFiled = '';
 		}
 
 		//Progress Bar
@@ -107,22 +115,4 @@ angular.module('myApp')
 			progress.fadeOut(2000);
 	            }
 
-/*
-		//Calendar
-		var date = new Date();
-
-		$scope.getDayName = function(dayNumber) {
-		var weekday = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-		return weekday[date.getDay()];
-		}
-
-		$scope.getMonthName = function(monthNumber) {
-		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-		return month[date.getMonth()];
-		}
-
-		$('.day_date').text($scope.getDayName());
-		$('.date_number').text(date.getDate());
-		$('.month_date').text($scope.getMonthName() + ' ' + date.getFullYear());
-*/
 }])

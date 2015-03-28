@@ -5,7 +5,7 @@ angular.module('myApp')
 
 	.controller('injuryCtrl', ['$scope', 'InjuriesService', function($scope, InjuriesService) {
 		$scope.title = "Injured Athletes";
-		$scope.injuries = InjuriesService.getInjuries();
+		$scope.injuries = InjuriesService;
 
 		$scope.updateInjury = function(injury) {
 			var injury = this.injury;

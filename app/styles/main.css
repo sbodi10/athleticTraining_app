@@ -479,6 +479,26 @@ input.ng-dirty.ng-valid.ng-valid-required.ng-valid-minlength {
   }
 }
 
+.checkbox-button {
+    margin-right: 10px;
+}
+
+.done-true {
+    text-decoration: line-through;
+    color: grey;
+}
 
 
 /* List of Athlete's Page */
+
+
+
+/* Page Animations */
+
+.page-todo.ng-enter {
+    animation: scaleUp 0.5s both ease-in;
+}
+
+.page-todo.ng-leave {
+    animation: scaleUp 0.5s both ease-in;
+}

@@ -10,8 +10,8 @@ to-do.html -->
 		<input class="form-control" id="resource" placeholder="Resource" type="text" required ng-minlength=3 ng-model="user">
 		<input class="form-control" id="task" placeholder="Task" type="text" required ng-minlength=3 ng-model="task">
 	<button class="btn btn-primary" id="addTask" ng-click="addTask(user, task)">Add Task</button>
-	<button class="btn btn-danger" ng-click="removeLast()">Delete Task</button>
-	<button class="btn btn-warning" ng-click="clearList()">Clear List</button>
+	<button class="btn btn-danger" ng-click="deleteTasks()">Delete Task</button>
+	<button class="btn btn-warning" ng-click="deleteAllTasks()">Clear List</button>
 	</form>
 </div>
 
@@ -22,7 +22,10 @@ to-do.html -->
 			<div class="alert alert-warning" ng-show="status !== undefined">{{ status }}</div>
 			<div class="panel-body">
 				<ul>
-					<li ng-repeat="item in todo" class="bg-primary">{{item.user}} | {{item.task}} </li>
+					<li ng-repeat="item in todo" class="bg-primary">
+						<input type="checkbox" ng-model="item.done" ng-true-value="true" ng-false-value="false">
+						<span class="done-{{item.done}}">{{item.user}} | {{item.task}}</span>
+					</li>
 				</ul>
 			</div>
 		</table>

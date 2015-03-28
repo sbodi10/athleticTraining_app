@@ -1,7 +1,7 @@
 <!-- Swami Shreeji
 injuries.html -->
 
-<h1>{{title}}</h1>
+<h1>{{title}} 	<a data-reveal-id="addNewInjury" class="btn btn-block btn-lg btn-primary">Add Injury</a></h1>
 <table class="table">
 	<thead>
 		<td><h4>Athlete</h4></td>
@@ -32,31 +32,64 @@ injuries.html -->
 	</tbody>
 </table>
 
+	<!-- Modal for Adding New Injury-->
+	<div id="addNewInjury" class="reveal-modal large" data-reveal>
+		<header>
+			<h5>New Injury <span style="padding-left: 50px; color: #1abc9c;" ng-bind="injuryAthleteName"></span></h5><hr>
+		</header>
 
-	<!-- Modal for Editing Player Injury-->
+		<div class="col-xs-6">
+			Athlete's Name: <input type="text" id="injuryAthleteName" ng-model="injuryAthleteName">
+			<h6>Injury:</h6> <input type="text" style="width: 50%;" value="{{injury.injury}}">
+		</div>
+
+		<div class="col-xs-3">
+			<h6 style="margin-top: 50px;">Date:</h6> <input type="date" style="width: 35%;" value="{{injury.date}}">
+		</div>
+
+		<div class="col-xs-6">
+			<h6>Description:</h6> <textarea cols="30" rows="5">{{injury.description}}</textarea>
+		</div>
+
+		<a class="close-reveal-modal" ng-click="closeEditInjuryModal()">&#215;</a><hr>
+
+		<!-- Save and Cancel Buttons -->
+		<div class="buttondiv">
+			<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal" ng-click="">Save Athlete</button>
+		</div>
+		<div class="buttondiv">
+			<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal" ng-click="closeEditInjuryModal()">Cancel</button>
+		</div>
+	</div>
+
+	<!-- Modal for Editing Injury-->
 	<div id="editInjury" class="reveal-modal large" data-reveal>
-	<header>
-		<h5>Edit Injury</h5><hr>
-	</header>
-	<div class="col-xs-6">
-		<h6><b>Athlete's Name</b>:  {{injury.name}}</h6>
-		<h6>Injury:</h6> <input type="text" style="width: 50%;" value="{{injury.injury}}">
-	</div>
-	<div class="col-xs-6">
-		<h6 style="margin-top: 50px;">Date:</h6> <input type="date" style="width: 35%;" value="{{injury.date}}">
-	</div>
-	<div class="col-xs-12">
-		<h6>Description:</h6> <textarea cols="30" rows="5">{{injury.description}}</textarea>
-	</div>
-	<a class="close-reveal-modal" ng-click="closeEditInjuryModal()">&#215;</a><hr>
+		<header>
+			<h5>Edit Injury</h5><hr>
+		</header>
 
-	<!-- Save and Cancel Buttons -->
-	<div class="buttondiv">
-		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal" ng-click="updateInjury(injury)">Save Athlete</button>
-	</div>
-	<div class="buttondiv">
-		<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal" ng-click="closeEditInjuryModal()">Cancel</button>
-	</div>
+		<div class="col-xs-6">
+			<h6><b>Athlete's Name</b>:  {{injury.name}}</h6>
+			<h6>Injury:</h6> <input type="text" style="width: 50%;" value="{{injury.injury}}">
+		</div>
+
+		<div class="col-xs-6">
+			<h6 style="margin-top: 50px;">Date:</h6> <input type="date" style="width: 35%;" value="{{injury.date}}">
+		</div>
+
+		<div class="col-xs-12">
+			<h6>Description:</h6> <textarea cols="30" rows="5">{{injury.description}}</textarea>
+		</div>
+
+		<a class="close-reveal-modal" ng-click="closeEditInjuryModal()">&#215;</a><hr>
+
+		<!-- Save and Cancel Buttons -->
+		<div class="buttondiv">
+			<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal" ng-click="">Save Athlete</button>
+		</div>
+		<div class="buttondiv">
+			<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal" ng-click="closeEditInjuryModal()">Cancel</button>
+		</div>
 	</div>
 
 <script>

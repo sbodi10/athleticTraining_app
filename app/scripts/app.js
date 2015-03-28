@@ -73,43 +73,34 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
 //Athletes Service Using Firebase
 myApp.factory('AthletesService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
 	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/athletes');
-	var athletes = $firebase(ref).$asObject();
+	return $firebase(ref).$asArray();
+}]);
 
-	var Athletes = {
+/*	var Athletes = {
+
 		getAthletes : function() {
 			return athletes;
 		},
 
 		editAthlete : function(person) {
 			person.$save(person);
-		}
-	}
+		},
 
-	return Athletes;
-}])
+		saveAthlete : function(person) {
+			athletes.$add(person);
+		}
+	};
+
+	return Athletes;*/
 
 //Injuries Service Using Firebase
 myApp.factory('InjuriesService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
 	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/injuries');
-	var injuries = $firebase(ref).$asObject();
-
-	var Injuries = {
-		getInjuries : function() {
-			return injuries;
-		},
-
-		updateInjury : function(person) {
-			injuries.$save(person).then(function() {
-				console.log(person + " has been saved");
-			});
-		}
-	}
-
-	return Injuries;
-}])
+	return $firebase(ref).$asArray();
+}]);
 
 
-myApp.factory('todoService', ['$http', function($http) {
+/*myApp.factory('todoService', ['$http', function($http) {
 
 	var url = 'https://athletictrainingapp.firebaseio.com/todo.json';
 	var tasks = {};
@@ -122,5 +113,14 @@ myApp.factory('todoService', ['$http', function($http) {
 		return $http.post(url, newtask);
 	};
 
+	tasks.deleteTask = function(taskID) {
+		return $http.delete(url, taskID);
+	};
+
 	return tasks;
+}]);*/
+
+myApp.factory('todoService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
+	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/todo');
+	return $firebase(ref).$asArray();
 }]);

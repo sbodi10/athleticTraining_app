@@ -22,11 +22,11 @@ Atheletes.html -->
 			<td>{{person.age}}</td>
 			<td>{{person.grade}}</td>
 			<td>{{person.doctor}}</td>
-			<td>{{person.phone}}</td>
-			<td>{{person.gotoDoctor}}</td>
+			<td>{{person.number}}</td>
+			<td>{{person.visitedDoctor}}</td>
 			<td>{{person.therapy}}</td>
-			<td>{{person.insurance}}</td>
-			<td>{{person.report}}</td>
+			<td>{{person.insuranceForm}}</td>
+			<td>{{person.reportFiled}}</td>
 		</tr>
 	</tbody>
 </table>
@@ -34,47 +34,47 @@ Atheletes.html -->
 <!-- Modal for Adding Athlete -->
 <div id="addAthlete" class="reveal-modal large" data-reveal>
 	<header>
-		<h5>Add Athlete <span style="padding-left: 50px; color: #1abc9c;" ng-bind="newAthlete"></span></h5><hr>
+		<h5>Add Athlete <span style="padding-left: 50px; color: #1abc9c;" ng-bind="athleteName"></span></h5><hr>
 	</header>
 	<div class="addAthleteModalContent">
 		<div class="col-xs-4">
-			Athlete Name: <input type="text" id="athleteName" ng-model="newAthlete">
-			Age: <input type="number" id="age">
+			Athlete Name: <input type="text" id="athleteName" ng-model="athleteName">
+			Age: <input type="number" id="age" ng-model="age">
 			Grade:
-			<select name="grade" id="grade">
+			<select name="grade" id="grade" ng-model="grade">
 				<option value="">Select</option>
 				<option value="9">9</option>
 				<option value="10">10</option>
 				<option value="11">11</option>
 				<option value="12">12</option>
 			</select>
-			Phone Number: <input type="tel" id="number">
+			Phone Number: <input type="tel" id="number" ng-model="number">
 		</div>
 		<div class="col-xs-4">
-			Doctor : <input type="text" id="doctor">
-			Doctor's Phone Number <input type="tel" id="doctorNumber">
+			Doctor : <input type="text" id="doctor" ng-model="doctor">
+			Doctor's Phone Number <input type="tel" id="doctorNumber" ng-model="doctorNumber">
 		</div>
 		<div class="col-xs-4">
 			Visited Doctor?
-			<select name="visitedDoctor" id="visitedDoctor">
+			<select name="visitedDoctor" id="visitedDoctor" ng-model="visitedDoctor">
 				<option value="">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
 			Referred for Therapy?
-			<select name="therapy" id="therapy">
+			<select name="therapy" id="therapy" ng-model="therapy">
 				<option value="">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
 			School Insurance Form Issued?
-			<select name="insuranceForm" id="insuranceForm">
+			<select name="insuranceForm" id="insuranceForm" ng-model="insuranceForm">
 				<option value="">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
 			Accident Report Filed?
-			<select name="reportFiled" id="reportFiled">
+			<select name="reportFiled" id="reportFiled" ng-model="reportFiled">
 				<option value="">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
@@ -84,58 +84,82 @@ Atheletes.html -->
 	<a class="close-reveal-modal">&#215;</a>
 	<!-- Save and Cancel Buttons -->
 	<div class="buttondiv">
-		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal" ng-click="">Save Athlete</button>
+		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal" ng-click="saveNewAthlete()">Save Athlete</button>
 	</div>
 	<div class="buttondiv">
 		<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal" ng-click="cancelButton()">Cancel</button>
 	</div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Modal for Editing Athlete -->
 <div id="editAthlete" class="reveal-modal large" data-reveal>
 	<header>
 		<h5>Edit Athlete <span style="padding-left: 50px; color: #1abc9c;">{{person.name}}</span></h5><hr>
 	</header>
-	<div class="addAthleteModalContent">
+	<div class="editAthleteModalContent">
 		<div class="col-xs-4">
-			Athlete Name: <input type="text" value="{{person.name}}">
-			Age: <input type="number" value="{{person.age}}">
+			Athlete Name: <input type="text" ng-model="person.name">
+			Age: <input type="number" ng-model="person.age">
 			Grade:
-			<select name="grade" id="grade">
-				<option value="{{person.grade}}">{{person.grade}}</option>
+			<select name="grade" id="grade" ng-model="person.grade">
+				<option value="Select">Select</option>
 				<option value="9">9</option>
 				<option value="10">10</option>
 				<option value="11">11</option>
 				<option value="12">12</option>
 			</select>
-			Phone Number: <input type="tel" value="{{person.phone}}">
+			Phone Number: <input type="tel" ng-model="person.number">
 		</div>
 		<div class="col-xs-4">
-			Doctor : <input type="text" value="{{person.doctor}}">
-			Doctor's Phone Number <input type="tel">
+			Doctor : <input type="text" ng-model="person.doctor">
+			Doctor's Phone Number <input type="tel" ng-model="person.doctorNumber">
 		</div>
 		<div class="col-xs-4">
 			Visited Doctor?
 			<select name="visitedDoctor" id="visitedDoctor">
-				<option value="{{person.gotoDoctor}}">{{person.gotoDoctor}}</option>
+				<option value="Select">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
 			Referred for Therapy?
 			<select name="therapy" id="therapy">
-				<option value="{{person.therapy}}">{{person.therapy}}</option>
+				<option value="Select">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
 			School Insurance Form Issued?
-			<select name="insuranceForm" id="insuranceForm">
-				<option value="{{person.insurance}}">{{person.insurance}}</option>
+			<select name="insuranceForm" id="insuranceForm" >
+				<option value="Select">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
 			Accident Report Filed?
-			<select name="reportFiled" id="reportFiled">
-				<option value="{{person.report}}">{{person.report}}</option>
+			<select name="reportFiled" id="reportFiled" >
+				<option value="Select">Select</option>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
@@ -144,10 +168,13 @@ Atheletes.html -->
 	<a class="close-reveal-modal" ng-click="closeEditAthleteModal()">&#215;</a>
 	<!-- Save and Cancel Buttons -->
 	<div class="buttondiv">
-		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal">Save Athlete</button>
+		<button class="btn btn-block btn-lg btn-primary" class="close-reveal-modal" ng-click="updateAthlete(person)">Save Athlete</button>
 	</div>
 	<div class="buttondiv">
 		<button class="btn btn-block btn-lg btn-default" class="close-reveal-modal" ng-click="closeEditAthleteModal()">Cancel</button>
+	</div>
+	<div class="buttondiv">
+		<button class="btn btn-block btn-lg btn-danger" ng-click="deleteAthlete()">Delete Athlete</button>
 	</div>
 </div>
 

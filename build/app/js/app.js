@@ -73,43 +73,34 @@ myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
 //Athletes Service Using Firebase
 myApp.factory('AthletesService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
 	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/athletes');
-	var athletes = $firebase(ref).$asObject();
+	return $firebase(ref).$asArray();
+}]);
 
-	var Athletes = {
+/*	var Athletes = {
+
 		getAthletes : function() {
 			return athletes;
 		},
 
 		editAthlete : function(person) {
 			person.$save(person);
-		}
-	}
+		},
 
-	return Athletes;
-}])
+		saveAthlete : function(person) {
+			athletes.$add(person);
+		}
+	};
+
+	return Athletes;*/
 
 //Injuries Service Using Firebase
 myApp.factory('InjuriesService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
 	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/injuries');
-	var injuries = $firebase(ref).$asObject();
-
-	var Injuries = {
-		getInjuries : function() {
-			return injuries;
-		},
-
-		updateInjury : function(person) {
-			injuries.$save(person).then(function() {
-				console.log(person + " has been saved");
-			});
-		}
-	}
-
-	return Injuries;
-}])
+	return $firebase(ref).$asArray();
+}]);
 
 
-myApp.factory('todoService', ['$http', function($http) {
+/*myApp.factory('todoService', ['$http', function($http) {
 
 	var url = 'https://athletictrainingapp.firebaseio.com/todo.json';
 	var tasks = {};
@@ -122,9 +113,17 @@ myApp.factory('todoService', ['$http', function($http) {
 		return $http.post(url, newtask);
 	};
 
-	return tasks;
-}]);
+	tasks.deleteTask = function(taskID) {
+		return $http.delete(url, taskID);
+	};
 
+	return tasks;
+}]);*/
+
+myApp.factory('todoService', ['$firebase', 'FIREBASE_URI', function($firebase, FIREBASE_URI) {
+	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/todo');
+	return $firebase(ref).$asArray();
+}]);
 //Swami Shreeji
 //aboutCtrl
 
@@ -175,93 +174,101 @@ angular.module('myApp')
 
 angular.module('myApp')
 
-	.controller('athletesCtrl', ['$scope', '$firebase', 'AthletesService', function($scope, $firebase, AthletesService) {
+	.controller('athletesCtrl', ['$scope', '$firebase', 'FIREBASE_URI', 'AthletesService', function($scope, $firebase, FIREBASE_URI, AthletesService) {
 		$scope.title = "List of Athletes";
-		$scope.athletes = AthletesService.getAthletes();
+		$scope.athletes = AthletesService;
+		$scope.gradeOptions = [
+			{
+				grade: '9'
+			},
+			{
+				grade: '10'
+			},
+			{
+				grade: '11'
+			},
+			{
+				grade: '12'
+			}
+		];
 
-		/*$scope.addAthlete = function() {
-			AthletesService.addAthlete(person);
-		};
+		//Save New Athlete
+		$scope.saveNewAthlete = function() {
 
-		$scope.editAthlete = function(id) {
-			AthletesService.editAthlete(person);
-		};
+			var newAthlete = {
+				 name : $scope.athleteName,
+				 age : $scope.age,
+				 grade : $scope.grade,
+				 number : $scope.number,
+				 doctor : $scope.doctor,
+				 doctorNumber : $scope.doctorNumber,
+				 visitedDoctor : $scope.visitedDoctor,
+				 therapy : $scope.therapy,
+				 insuranceForm : $scope.insuranceForm,
+				 reportFiled : $scope.reportFiled
+			};
 
-		$scope.deleteAthlete = function(id) {
-			AthletesService.deleteAthlete(person)
-		};
-		*/
+			var athletesList = AthletesService;
 
-		//$scope.addNewAthlete = saveNewAthlete();
+			athletesList.$add(newAthlete);
 
-		/*$scope.saveNewAthlete = function() {
+			console.log("New Athlete Added!");
+			$scope.athleteName = '';
+			$scope.age = '';
+			$scope.grade = '';
+			$scope.number = '';
+			$scope.doctor = '';
+			$scope.doctorNumber = '';
+			$scope.visitedDoctor = '';
+			$scope.therapy = '';
+			$scope.insuranceForm = '';
+			$scope.reportFiled = '';
 
-			var NewAthlete = Parse.Object.extend("Popat");
-			var newAthlete = new Popat();
-
-			var athleteName = $('#athleteName').val();
-			var athleteAge = $('#age').val();
-			var athleteGrade = $('#grade').val();
-			var athletePhoneNumber = ('#number').val();
-			var athleteDoctor = $('#doctor').val();
-			var athleteDoctorNumber = $('#doctorNumber').val();
-			var athleteVistedDoctor = $('#visitedDoctor').val();
-			var athleteTherapy = $('#therapy').val();
-			var athleteForm = $('#insuranceForm').val();
-			var athleteReport = $('#reportFiled').val();
-
-			newAthlete.set("athleteName", athleteName);
-			newAthlete.set("athleteAge", athleteAge);
-			newAthlete.set("athleteGrade", athleteGrade);
-			newAthlete.set("athletePhoneNumber", athletePhoneNumber);
-			newAthlete.set("athleteDoctor", athleteDoctor);
-			newAthlete.set("athleteDoctorNumber", athleteDoctorNumber);
-			newAthlete.set("athleteVistedDoctor", athleteVistedDoctor);
-			newAthlete.set("athleteTherapy", athleteTherapy);
-			newAthlete.set("athleteForm", athleteForm);
-			newAthlete.set("athleteReport", athleteReport);
-
-			newAthlete.save(null, {
-				success: function() {
-					console.log("Saved Athlete");
-					console.log(newAthlete);
-					closeAddAthleteModal();
-				},
-				error: function(athlete, error) {
-					console.log("Error -> Did not save Athlete");
-					console.log(error.message);
-				}
-			})
-		}*/
-
-		$scope.closeAddAthleteModal = function() {
 			$('#addAthlete').foundation('reveal', 'close');
-		}
+		};
+
+		//THIS NEEDS TO BE FIXED
+		$scope.updateAthlete = function(person) {
+			var athletesList = AthletesService;
+			athletesList.$save(this.person);
+			console.log(this.person.name + " has been updated!");
+			$('#editAthlete').foundation('reveal', 'close');
+			//closeEditAthleteModal();
+		};
+
+		$scope.deleteAthlete = function(person) {
+			var athletesList = AthletesService;
+			athletesList.$remove(this.person);
+			$('#editAthlete').foundation('reveal', 'close');
+		};
 
 		//Loads Overlay with Data from Clicked Row
 		$scope.rowClick = function(person) {
-			$scope.person = person;
+			$scope.person = this.person;
 			console.log(person);
 			$('#editAthlete').foundation('reveal', 'open');
 		}
 
-		//NOT WORKING - Closes the overlay
-		$scope.closeEditAthleteModal = function() {
-			$('#editAthlete').foundation('reveal', 'close');
-		}
+		// $scope.closeAddAthleteModal = function() {
+		// 	$(this).foundation('reveal', 'close');
+		// }
+
+		// $scope.closeEditAthleteModal = function() {
+		// 	$('#editAthlete').foundation('reveal', 'close');
+		// }
 
 		$scope.cancelButton = function() {
-			$('#athleteName').val('');
 			$scope.newAthlete = '';
-			$('#age').val('');
-			$('[name=grade]').val('');
-			$('#number').val('');
-			$('#doctor').val('');
-			$('#doctorNumber').val('');
-			$('[name=visitedDoctor]').val('');
-			$('[name=therapy]').val('');
-			$('[name=insuranceForm]').val('');
-			$('[name=reportFiled]').val('');
+			$scope.athleteName = '';
+			$scope.age = '';
+			$scope.grade = '';
+			$scope.number = '';
+			$scope.doctor = '';
+			$scope.doctorNumber = '';
+			$scope.visitedDoctor = '';
+			$scope.therapy = '';
+			$scope.insuranceForm = '';
+			$scope.reportFiled = '';
 		}
 
 		//Progress Bar
@@ -279,24 +286,6 @@ angular.module('myApp')
 			progress.fadeOut(2000);
 	            }
 
-/*
-		//Calendar
-		var date = new Date();
-
-		$scope.getDayName = function(dayNumber) {
-		var weekday = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-		return weekday[date.getDay()];
-		}
-
-		$scope.getMonthName = function(monthNumber) {
-		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-		return month[date.getMonth()];
-		}
-
-		$('.day_date').text($scope.getDayName());
-		$('.date_number').text(date.getDate());
-		$('.month_date').text($scope.getMonthName() + ' ' + date.getFullYear());
-*/
 }])
 //Swami Shreeji
 //homeCtrl
@@ -420,7 +409,7 @@ angular.module('myApp')
 
 	.controller('injuryCtrl', ['$scope', 'InjuriesService', function($scope, InjuriesService) {
 		$scope.title = "Injured Athletes";
-		$scope.injuries = InjuriesService.getInjuries();
+		$scope.injuries = InjuriesService;
 
 		$scope.updateInjury = function(injury) {
 			var injury = this.injury;
@@ -497,50 +486,60 @@ angular.module('myApp')
 
 angular.module('myApp')
 
-	.controller('to-doCtrl', ['$scope', 'todoService', function($scope, todoService) {
+	.controller('to-doCtrl', ['$scope', '$firebase', 'FIREBASE_URI', 'todoService', function($scope, $firebase, FIREBASE_URI, todoService) {
 		$scope.title = "To-Do List";
-
-		//Binds the todoService with the todo variable within the scope for the view to access
-		function getTasks () {
-			todoService.getTasks()
-
-			.success(function(response) {
-				$scope.todo = response;
-			})
-
-			.error(function(error) {
-				$scope.status = "Unable to load ToDo Tasks " + error.message;
-			});
-		}
-
-		//Call getTasks to grab data
-		getTasks();
+		$scope.pageClass = "page-todo";
+		$scope.todo = todoService;
 
 		//Adds Task to Todo List
 		$scope.addTask = function() {
-
 			var newTask = {
 				user : $scope.user,
-				task : $scope.task
+				task : $scope.task,
+				done : 'NO'
 			};
 
-			todoService.addTask(newTask)
+			var tasks = todoService;
+
+			tasks.$add(newTask);
+
+			console.log("New Task Added!");
+			$scope.user = '';
+			$scope.task = '';
+		};
+
+		//Deletes Selected To Do Tasks
+		$scope.deleteTasks = function() {
+			//Array of Tasks Needed To Be Deleted
+			$scope.todo.forEach(function(item) {
+				if(item.done === 'true') {
+					$scope.todo.$remove(item);
+				}
+			})
+			console.log("To Do Items Deleted");
+		};
+
+		//Deletes All To Do Tasks
+		$scope.deleteAllTasks = function() {
+
+			var deleteAllTaskArray = [];
+
+			angular.forEach($scope.todo, function(todoItem) {
+				deleteAllTaskArray.push(todoItem);
+				console.log(deleteAllTaskArray);
+			});
+
+			todoService.deleteTask(deleteAllTaskArray)
 
 				.success(function(response) {
-					console.log("New Task Added!");
-					$scope.user = '';
-					$scope.task = '';
+					console.log("Task Deleted!");
 					getTasks();
 				})
 
 				.error(function(error) {
-					$scope.noTask = "Task Could Not Be Added: " + error;
+					$scope.status = "Task Could Not Be Deleted: " + error;
 				});
 		};
-
-
-
-
 
 		//Progress Bar
 		$scope.onViewLoad = function() {
@@ -555,24 +554,6 @@ angular.module('myApp')
 			bar.css("width", "100%");
 			bar.fadeOut(2000);
 			progress.fadeOut(2000);
-	            }
-
-		//Calendar
-		var date = new Date();
-
-		$scope.getDayName = function(dayNumber) {
-		var weekday = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-		return weekday[date.getDay()];
-		}
-
-		$scope.getMonthName = function(monthNumber) {
-		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-		return month[date.getMonth()];
-		}
-
-		$('.day_date').text($scope.getDayName());
-		$('.date_number').text(date.getDate());
-		$('.month_date').text($scope.getMonthName() + ' ' + date.getFullYear());
-
+	            };
 
 }]);

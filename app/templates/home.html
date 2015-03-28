@@ -2,7 +2,7 @@
 home.html -->
 <div class="ontop">
 	<div class="col-xs-5">
-		<h2>Welcome, <b>Sapan</b></h2>
+		<h2>Welcome, <b>Danielle</b></h2>
 		<!-- HAVE THIS PROGRESS BAR APPEAR AND DISAPPER WHEN DATA IS LOADING -->
 		<div class="progress">
 			<div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 45%"><span></span></div>
@@ -10,8 +10,8 @@ home.html -->
 	</div>
 
 	<!-- Sports Filter By Season -->
-	<div class="col-xs-4">
-		<h3>{{ sportsModel || 'All Sports'}} | {{ sportsSearch }}</h3>
+	<div class="col-xs-6" style="margin-left: 8.3%;">
+		<h3>{{ sportsModel || 'All Sports'}}</h3>
 		<div class="btn-group" id="filterSports">
 		        	<label class="btn btn-primary" ng-model="sportsModel" ng-click="allSportsShow()" ng-class="{ active: allSports }" btn-radio="'All Sports'">All Sports</label>
 	        		<label class="btn btn-primary" ng-model="sportsModel" ng-click="fallSportsShow()" ng-class="{ active: fallSports }" btn-radio="'Fall'">Fall</label>
@@ -21,9 +21,6 @@ home.html -->
 	</div>
 
 	<div class="col-xs-3">
-		<div class="todo-search">
-			<input type="search" class="todo-search-field" value placeholder="Search" ng-model="sportsSearch">
-		</div>
 		<!--<div class="today">
 			<div class="row">
 				<div class="col-xs-6">

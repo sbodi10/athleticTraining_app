@@ -1,10 +1,12 @@
 [
 	{
 		"user" : "Sapan Bodiwala",
-		"task" : "Dashboard"
+		"task" : "Dashboard",
+		"done" : "false"
 	},
 	{
 		"user" : "Arun",
-		"task" : "Checklist"
+		"task" : "Checklist",
+		"done" : "false"
 	}
 ]
