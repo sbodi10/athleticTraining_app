@@ -179,18 +179,74 @@ angular.module('myApp')
 		$scope.athletes = AthletesService;
 		$scope.gradeOptions = [
 			{
-				grade: '9'
+				value: 'Select'
 			},
 			{
-				grade: '10'
+				value: '9'
 			},
 			{
-				grade: '11'
+				value: '10'
 			},
 			{
-				grade: '12'
+				value: '11'
+			},
+			{
+				value: '12'
 			}
 		];
+		$scope.selectedGrade = $scope.gradeOptions[0];
+
+		$scope.doctorOptions = [
+			{
+				value: 'Select'
+			},
+			{
+				value: 'Yes'
+			},
+			{
+				value: 'No'
+			},
+		];
+		$scope.visitedDoctor = $scope.doctorOptions[0];
+
+		$scope.therapyOptions = [
+			{
+				value: "Select"
+			},
+			{
+				value: "Yes"
+			},
+			{
+				value: "No"
+			},
+		];
+		$scope.therapy = $scope.therapyOptions[0];
+
+		$scope.insuranceOptions = [
+			{
+				value: "Select"
+			},
+			{
+				value: "Yes"
+			},
+			{
+				value: "No"
+			}
+		];
+		$scope.insuranceForm = $scope.insuranceOptions[0];
+
+		$scope.reportOptions = [
+			{
+				value: "Select"
+			},
+			{
+				value: "Yes"
+			},
+			{
+				value: "No"
+			}
+		];
+		$scope.reportFiled = $scope.reportOptions[0];
 
 		//Save New Athlete
 		$scope.saveNewAthlete = function() {

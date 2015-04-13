@@ -162,6 +162,7 @@ small {
             /*BLUE*/
             background-color: #90CBFF;
             font-weight: 800;
+            cursor: pointer;
 }
 
 .athleteTable tr:hover td {
@@ -169,6 +170,7 @@ small {
             /*BLUE*/
             background-color: #90CBFF;
             font-weight: 800;
+            cursor: pointer;
 }
 
 .search {

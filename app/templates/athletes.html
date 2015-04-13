@@ -9,8 +9,8 @@ Atheletes.html -->
 		<td style="width: 155px;">Athlete's Name</td>
 		<td>Age</td>
 		<td>Grade</td>
-		<td style="width: 100px;">Doctor</td>
-		<td>Phone Number</td>
+		<td style="width: 110px;">Phone Number</td>
+		<td>Doctor</td>
 		<td>Visted Doctor?</td>
 		<td>Referred for Therapy?</td>
 		<td>School Insurance Form Issued?</td>
@@ -20,13 +20,13 @@ Atheletes.html -->
 		<tr ng-repeat="person in athletes | filter: search" ng-click="rowClick(person)">
 			<td>{{person.name}}</td>
 			<td>{{person.age}}</td>
-			<td>{{person.grade}}</td>
-			<td>{{person.doctor}}</td>
+			<td>{{person.grade.value}}</td>
 			<td>{{person.number}}</td>
-			<td>{{person.visitedDoctor}}</td>
-			<td>{{person.therapy}}</td>
-			<td>{{person.insuranceForm}}</td>
-			<td>{{person.reportFiled}}</td>
+			<td>{{person.doctor}}</td>
+			<td>{{person.visitedDoctor.value}}</td>
+			<td>{{person.therapy.value}}</td>
+			<td>{{person.insuranceForm.value}}</td>
+			<td>{{person.reportFiled.value}}</td>
 		</tr>
 	</tbody>
 </table>
@@ -41,13 +41,7 @@ Atheletes.html -->
 			Athlete Name: <input type="text" id="athleteName" ng-model="athleteName">
 			Age: <input type="number" id="age" ng-model="age">
 			Grade:
-			<select name="grade" id="grade" ng-model="grade">
-				<option value="">Select</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
-			</select>
+			<select name="grade" id="grade" ng-model="grade" ng-options="grade.value for grade in gradeOptions"></select>
 			Phone Number: <input type="tel" id="number" ng-model="number">
 		</div>
 		<div class="col-xs-4">
@@ -56,29 +50,13 @@ Atheletes.html -->
 		</div>
 		<div class="col-xs-4">
 			Visited Doctor?
-			<select name="visitedDoctor" id="visitedDoctor" ng-model="visitedDoctor">
-				<option value="">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="visitedDoctor" id="visitedDoctor" ng-model="visitedDoctor" ng-options="visitedDoctor.value for visitedDoctor in doctorOptions"></select>
 			Referred for Therapy?
-			<select name="therapy" id="therapy" ng-model="therapy">
-				<option value="">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="therapy" id="therapy" ng-model="therapy" ng-options="therapy.value for therapy in therapyOptions"></select>
 			School Insurance Form Issued?
-			<select name="insuranceForm" id="insuranceForm" ng-model="insuranceForm">
-				<option value="">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="insuranceForm" id="insuranceForm" ng-model="insuranceForm" ng-options="insuranceForm.value for insuranceForm in insuranceOptions"></select>
 			Accident Report Filed?
-			<select name="reportFiled" id="reportFiled" ng-model="reportFiled">
-				<option value="">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="reportFiled" id="reportFiled" ng-model="reportFiled" ng-options="reportFiled.value for reportFiled in reportOptions"></select>
 		</div>
 	</div><br><hr>
 	<a class="close-reveal-modal">&#215;</a>
@@ -125,13 +103,7 @@ Atheletes.html -->
 			Athlete Name: <input type="text" ng-model="person.name">
 			Age: <input type="number" ng-model="person.age">
 			Grade:
-			<select name="grade" id="grade" ng-model="person.grade">
-				<option value="Select">Select</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
-			</select>
+			<select name="grade" id="grade" ng-model="person.value" ng-options="grade.value for grade in gradeOptions"></select>
 			Phone Number: <input type="tel" ng-model="person.number">
 		</div>
 		<div class="col-xs-4">
@@ -140,29 +112,13 @@ Atheletes.html -->
 		</div>
 		<div class="col-xs-4">
 			Visited Doctor?
-			<select name="visitedDoctor" id="visitedDoctor">
-				<option value="Select">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="visitedDoctor" id="visitedDoctor" ng-model="person.visitedDoctor" ng-options="visitedDoctor.value for visitedDoctor in doctorOptions"></select>
 			Referred for Therapy?
-			<select name="therapy" id="therapy">
-				<option value="Select">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="therapy" id="therapy" ng-model="person.therapy" ng-options="therapy.value for therapy in therapyOptions"></select>
 			School Insurance Form Issued?
-			<select name="insuranceForm" id="insuranceForm" >
-				<option value="Select">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="insuranceForm" id="insuranceForm" ng-model="person.insuranceForm" ng-options="insuranceForm.value for insuranceForm in insuranceOptions"></select>
 			Accident Report Filed?
-			<select name="reportFiled" id="reportFiled" >
-				<option value="Select">Select</option>
-				<option value="Yes">Yes</option>
-				<option value="No">No</option>
-			</select>
+			<select name="reportFiled" id="reportFiled" ng-model="person.reportFiled" ng-options="reportFiled.value for reportFiled in reportOptions"></select>
 		</div>
 	</div><br><hr>
 	<a class="close-reveal-modal" ng-click="closeEditAthleteModal()">&#215;</a>
