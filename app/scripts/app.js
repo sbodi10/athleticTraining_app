@@ -3,6 +3,36 @@ var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', '
 
 myApp.constant('FIREBASE_URI', 'https://athletictrainingapp.firebaseio.com/');
 
+myApp.constant('GRADE_OPTIONS', [
+	{
+		value: 'Select'
+	},
+	{
+		value: '9'
+	},
+	{
+		value: '10'
+	},
+	{
+		value: '11'
+	},
+	{
+		value: '12'
+	}
+]);
+
+myApp.constant('SELECT_OPTIONS', [
+	{
+		value: 'Select'
+	},
+	{
+		value: 'Yes'
+	},
+	{
+		value: 'No'
+	}
+]);
+
 myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
 

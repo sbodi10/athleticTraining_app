@@ -3,6 +3,36 @@ var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', '
 
 myApp.constant('FIREBASE_URI', 'https://athletictrainingapp.firebaseio.com/');
 
+myApp.constant('GRADE_OPTIONS', [
+	{
+		value: 'Select'
+	},
+	{
+		value: '9'
+	},
+	{
+		value: '10'
+	},
+	{
+		value: '11'
+	},
+	{
+		value: '12'
+	}
+]);
+
+myApp.constant('SELECT_OPTIONS', [
+	{
+		value: 'Select'
+	},
+	{
+		value: 'Yes'
+	},
+	{
+		value: 'No'
+	}
+]);
+
 myApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
 
@@ -127,9 +157,7 @@ myApp.factory('todoService', ['$firebase', 'FIREBASE_URI', function($firebase, F
 //Swami Shreeji
 //aboutCtrl
 
-angular.module('myApp')
-
-	.controller('aboutCtrl', ['$scope', function($scope) {
+angular.module('myApp').controller('aboutCtrl', ['$scope', '$modal', function($scope, $modal) {
 		$scope.title = "Inside the Athletic Training App";
 
 		var inform = "This application was developed for Trainer Danielle LaBianca. After being the athletic trainer for the Elmwood Park Crusaders (my local highschool) for the past 10 years, I wanted to give back to her after all of the hard work she's put in for the athletes in our community. While I've recently graduated college and just started my career, I still wanted to proactively learn and do more. And so I decided to take the opportunity to help serve my local community. And after a few months of development, this application was released for her and all athletic trainers out there looking for a user friendly way to serve their needs. I hope you enjoy using the app as much as I enjoyed developing it.";
@@ -174,78 +202,27 @@ angular.module('myApp')
 
 angular.module('myApp')
 
-	.controller('athletesCtrl', ['$scope', '$firebase', 'FIREBASE_URI', 'AthletesService', function($scope, $firebase, FIREBASE_URI, AthletesService) {
+	.controller('athletesCtrl', ['$scope', '$firebase', 'FIREBASE_URI', 'AthletesService', 'GRADE_OPTIONS', 'SELECT_OPTIONS',
+		function($scope, $firebase, FIREBASE_URI, AthletesService, GRADE_OPTIONS, SELECT_OPTIONS) {
+
 		$scope.title = "List of Athletes";
+
+		$scope.alerts =
+			{type: 'Saved', message: 'Athlete Saved Successfully!'};
+
+
 		$scope.athletes = AthletesService;
-		$scope.gradeOptions = [
-			{
-				value: 'Select'
-			},
-			{
-				value: '9'
-			},
-			{
-				value: '10'
-			},
-			{
-				value: '11'
-			},
-			{
-				value: '12'
-			}
-		];
+
+		//Dropdown Selections & Dropdown Defaults
+		$scope.gradeOptions = angular.copy(GRADE_OPTIONS);
 		$scope.selectedGrade = $scope.gradeOptions[0];
-
-		$scope.doctorOptions = [
-			{
-				value: 'Select'
-			},
-			{
-				value: 'Yes'
-			},
-			{
-				value: 'No'
-			},
-		];
+		$scope.doctorOptions = angular.copy(SELECT_OPTIONS);
 		$scope.visitedDoctor = $scope.doctorOptions[0];
-
-		$scope.therapyOptions = [
-			{
-				value: "Select"
-			},
-			{
-				value: "Yes"
-			},
-			{
-				value: "No"
-			},
-		];
+		$scope.therapyOptions = angular.copy(SELECT_OPTIONS);
 		$scope.therapy = $scope.therapyOptions[0];
-
-		$scope.insuranceOptions = [
-			{
-				value: "Select"
-			},
-			{
-				value: "Yes"
-			},
-			{
-				value: "No"
-			}
-		];
+		$scope.insuranceOptions = angular.copy(SELECT_OPTIONS);
 		$scope.insuranceForm = $scope.insuranceOptions[0];
-
-		$scope.reportOptions = [
-			{
-				value: "Select"
-			},
-			{
-				value: "Yes"
-			},
-			{
-				value: "No"
-			}
-		];
+		$scope.reportOptions = angular.copy(SELECT_OPTIONS);
 		$scope.reportFiled = $scope.reportOptions[0];
 
 		//Save New Athlete
@@ -254,7 +231,7 @@ angular.module('myApp')
 			var newAthlete = {
 				 name : $scope.athleteName,
 				 age : $scope.age,
-				 grade : $scope.grade,
+				 grade : $scope.selectedGrade,
 				 number : $scope.number,
 				 doctor : $scope.doctor,
 				 doctorNumber : $scope.doctorNumber,
@@ -289,7 +266,6 @@ angular.module('myApp')
 			athletesList.$save(this.person);
 			console.log(this.person.name + " has been updated!");
 			$('#editAthlete').foundation('reveal', 'close');
-			//closeEditAthleteModal();
 		};
 
 		$scope.deleteAthlete = function(person) {
@@ -304,14 +280,6 @@ angular.module('myApp')
 			console.log(person);
 			$('#editAthlete').foundation('reveal', 'open');
 		}
-
-		// $scope.closeAddAthleteModal = function() {
-		// 	$(this).foundation('reveal', 'close');
-		// }
-
-		// $scope.closeEditAthleteModal = function() {
-		// 	$('#editAthlete').foundation('reveal', 'close');
-		// }
 
 		$scope.cancelButton = function() {
 			$scope.newAthlete = '';
@@ -342,13 +310,51 @@ angular.module('myApp')
 			progress.fadeOut(2000);
 	            }
 
+	            $(document).foundation();
 }])
+myApp.controller('AuthenticationCtrl', ['$scope', '$location', '$firebaseAuth', function($scope, $location, $firebaseAuth) {
+
+	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/');
+	var auth = $firebaseAuth(ref);
+
+	$scope.login = function() {
+		auth.$authWithPassword({
+			email: $scope.user.email,
+			password: $scope.user.password
+		}).then(function(user) {
+			console.log("Logged In!");
+			$location.path('/athletes');
+		}).catch(function(error) {
+			console.log("Error: " + error.message);
+		});
+	};
+
+
+
+}]);
 //Swami Shreeji
 //homeCtrl
 
 angular.module('myApp')
 
-	.controller('homeCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
+	.controller('homeCtrl', ['$rootScope', '$scope', '$location', '$firebaseAuth', function($rootScope, $scope, $location, $firebaseAuth) {
+
+
+	var ref = new Firebase('https://athletictrainingapp.firebaseio.com/');
+	var auth = $firebaseAuth(ref);
+
+	$scope.login = function() {
+		auth.$authWithPassword({
+			email: $scope.user.email,
+			password: $scope.user.password
+		}).then(function(user) {
+			console.log("Logged In!");
+			$location.path('/athletes');
+		}).catch(function(error) {
+			console.log("Error: " + error.message);
+		});
+	};
+
 
 		//Progress Bar
 	            $scope.loadBar = function() {

@@ -3,78 +3,27 @@
 
 angular.module('myApp')
 
-	.controller('athletesCtrl', ['$scope', '$firebase', 'FIREBASE_URI', 'AthletesService', function($scope, $firebase, FIREBASE_URI, AthletesService) {
+	.controller('athletesCtrl', ['$scope', '$firebase', 'FIREBASE_URI', 'AthletesService', 'GRADE_OPTIONS', 'SELECT_OPTIONS',
+		function($scope, $firebase, FIREBASE_URI, AthletesService, GRADE_OPTIONS, SELECT_OPTIONS) {
+
 		$scope.title = "List of Athletes";
+
+		$scope.alerts =
+			{type: 'Saved', message: 'Athlete Saved Successfully!'};
+
+
 		$scope.athletes = AthletesService;
-		$scope.gradeOptions = [
-			{
-				value: 'Select'
-			},
-			{
-				value: '9'
-			},
-			{
-				value: '10'
-			},
-			{
-				value: '11'
-			},
-			{
-				value: '12'
-			}
-		];
+
+		//Dropdown Selections & Dropdown Defaults
+		$scope.gradeOptions = angular.copy(GRADE_OPTIONS);
 		$scope.selectedGrade = $scope.gradeOptions[0];
-
-		$scope.doctorOptions = [
-			{
-				value: 'Select'
-			},
-			{
-				value: 'Yes'
-			},
-			{
-				value: 'No'
-			},
-		];
+		$scope.doctorOptions = angular.copy(SELECT_OPTIONS);
 		$scope.visitedDoctor = $scope.doctorOptions[0];
-
-		$scope.therapyOptions = [
-			{
-				value: "Select"
-			},
-			{
-				value: "Yes"
-			},
-			{
-				value: "No"
-			},
-		];
+		$scope.therapyOptions = angular.copy(SELECT_OPTIONS);
 		$scope.therapy = $scope.therapyOptions[0];
-
-		$scope.insuranceOptions = [
-			{
-				value: "Select"
-			},
-			{
-				value: "Yes"
-			},
-			{
-				value: "No"
-			}
-		];
+		$scope.insuranceOptions = angular.copy(SELECT_OPTIONS);
 		$scope.insuranceForm = $scope.insuranceOptions[0];
-
-		$scope.reportOptions = [
-			{
-				value: "Select"
-			},
-			{
-				value: "Yes"
-			},
-			{
-				value: "No"
-			}
-		];
+		$scope.reportOptions = angular.copy(SELECT_OPTIONS);
 		$scope.reportFiled = $scope.reportOptions[0];
 
 		//Save New Athlete
@@ -83,7 +32,7 @@ angular.module('myApp')
 			var newAthlete = {
 				 name : $scope.athleteName,
 				 age : $scope.age,
-				 grade : $scope.grade,
+				 grade : $scope.selectedGrade,
 				 number : $scope.number,
 				 doctor : $scope.doctor,
 				 doctorNumber : $scope.doctorNumber,
@@ -118,7 +67,6 @@ angular.module('myApp')
 			athletesList.$save(this.person);
 			console.log(this.person.name + " has been updated!");
 			$('#editAthlete').foundation('reveal', 'close');
-			//closeEditAthleteModal();
 		};
 
 		$scope.deleteAthlete = function(person) {
@@ -133,14 +81,6 @@ angular.module('myApp')
 			console.log(person);
 			$('#editAthlete').foundation('reveal', 'open');
 		}
-
-		// $scope.closeAddAthleteModal = function() {
-		// 	$(this).foundation('reveal', 'close');
-		// }
-
-		// $scope.closeEditAthleteModal = function() {
-		// 	$('#editAthlete').foundation('reveal', 'close');
-		// }
 
 		$scope.cancelButton = function() {
 			$scope.newAthlete = '';
@@ -171,4 +111,5 @@ angular.module('myApp')
 			progress.fadeOut(2000);
 	            }
 
+	            $(document).foundation();
 }])

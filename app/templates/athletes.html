@@ -4,6 +4,10 @@ Atheletes.html -->
 
 <h3>Search: {{search.$}}</h3>
 <input type="text" ng-model="search.$" class="search">
+
+
+<alert type="{{alerts}}">{{alert.message}}</alert>
+
 <table class="table">
 	<thead>
 		<td style="width: 155px;">Athlete's Name</td>
@@ -41,7 +45,7 @@ Atheletes.html -->
 			Athlete Name: <input type="text" id="athleteName" ng-model="athleteName">
 			Age: <input type="number" id="age" ng-model="age">
 			Grade:
-			<select name="grade" id="grade" ng-model="grade" ng-options="grade.value for grade in gradeOptions"></select>
+			<select name="grade" id="grade" ng-model="selectedGrade" ng-options="selectedGrade.value for selectedGrade in gradeOptions"></select>
 			Phone Number: <input type="tel" id="number" ng-model="number">
 		</div>
 		<div class="col-xs-4">
@@ -70,29 +74,6 @@ Atheletes.html -->
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Modal for Editing Athlete -->
 <div id="editAthlete" class="reveal-modal large" data-reveal>
 	<header>
@@ -102,8 +83,7 @@ Atheletes.html -->
 		<div class="col-xs-4">
 			Athlete Name: <input type="text" ng-model="person.name">
 			Age: <input type="number" ng-model="person.age">
-			Grade:
-			<select name="grade" id="grade" ng-model="person.value" ng-options="grade.value for grade in gradeOptions"></select>
+			Grade:<select name="grade" id="grade" ng-model="person.grade.value" ng-options="selectedGrade.value as selectedGrade.value for selectedGrade in gradeOptions"></select>
 			Phone Number: <input type="tel" ng-model="person.number">
 		</div>
 		<div class="col-xs-4">
@@ -111,14 +91,10 @@ Atheletes.html -->
 			Doctor's Phone Number <input type="tel" ng-model="person.doctorNumber">
 		</div>
 		<div class="col-xs-4">
-			Visited Doctor?
-			<select name="visitedDoctor" id="visitedDoctor" ng-model="person.visitedDoctor" ng-options="visitedDoctor.value for visitedDoctor in doctorOptions"></select>
-			Referred for Therapy?
-			<select name="therapy" id="therapy" ng-model="person.therapy" ng-options="therapy.value for therapy in therapyOptions"></select>
-			School Insurance Form Issued?
-			<select name="insuranceForm" id="insuranceForm" ng-model="person.insuranceForm" ng-options="insuranceForm.value for insuranceForm in insuranceOptions"></select>
-			Accident Report Filed?
-			<select name="reportFiled" id="reportFiled" ng-model="person.reportFiled" ng-options="reportFiled.value for reportFiled in reportOptions"></select>
+			Visited Doctor?<select name="visitedDoctor" id="visitedDoctor" ng-model="person.visitedDoctor.value" ng-options="visitedDoctor.value as visitedDoctor.value for visitedDoctor in doctorOptions"></select>
+			Referred for Therapy?<select name="therapy" id="therapy" ng-model="person.therapy.value" ng-options="therapy.value as therapy.value for therapy in therapyOptions"></select>
+			School Insurance Form Issued?<select name="insuranceForm" id="insuranceForm" ng-model="person.insuranceForm.value" ng-options="insuranceForm.value as insuranceForm.value for insuranceForm in insuranceOptions"></select>
+			Accident Report Filed?<select name="reportFiled" id="reportFiled" ng-model="person.reportFiled.value" ng-options="reportFiled.value as reportFiled.value for reportFiled in reportOptions"></select>
 		</div>
 	</div><br><hr>
 	<a class="close-reveal-modal" ng-click="closeEditAthleteModal()">&#215;</a>
@@ -133,7 +109,3 @@ Atheletes.html -->
 		<button class="btn btn-block btn-lg btn-danger" ng-click="deleteAthlete()">Delete Athlete</button>
 	</div>
 </div>
-
-<script>
-$(document).foundation();
-</script>

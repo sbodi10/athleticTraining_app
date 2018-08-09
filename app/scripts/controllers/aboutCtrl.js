@@ -1,9 +1,7 @@
 //Swami Shreeji
 //aboutCtrl
 
-angular.module('myApp')
-
-	.controller('aboutCtrl', ['$scope', function($scope) {
+angular.module('myApp').controller('aboutCtrl', ['$scope', '$modal', function($scope, $modal) {
 		$scope.title = "Inside the Athletic Training App";
 
 		var inform = "This application was developed for Trainer Danielle LaBianca. After being the athletic trainer for the Elmwood Park Crusaders (my local highschool) for the past 10 years, I wanted to give back to her after all of the hard work she's put in for the athletes in our community. While I've recently graduated college and just started my career, I still wanted to proactively learn and do more. And so I decided to take the opportunity to help serve my local community. And after a few months of development, this application was released for her and all athletic trainers out there looking for a user friendly way to serve their needs. I hope you enjoy using the app as much as I enjoyed developing it.";
